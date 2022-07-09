@@ -3,7 +3,7 @@ const app = require("../app");
 const jwt = require("jsonwebtoken");
 const mockServer = require("supertest");
 // const { MongoMemoryServer } = require("mongodb-memory-server");
-const User = require("../model/user");
+const User = require("../models/user");
 const { startDb, stopDb, deleteAll } = require("./util/inMemoryDb");
 
 describe("requests to api/dashboards", () => {

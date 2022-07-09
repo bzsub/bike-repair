@@ -2,7 +2,7 @@ require("dotenv").config();
 const app = require("../app");
 const jwt = require("jsonwebtoken");
 const mockServer = require("supertest");
-const User = require("../model/user");
+const User = require("../models/user");
 const { startDb, stopDb, deleteAll } = require("./util/inMemoryDb");
 const { setupGoogleSuccessResponse, setupGoogleErrorResponse } = require("./util/httpMock");
 

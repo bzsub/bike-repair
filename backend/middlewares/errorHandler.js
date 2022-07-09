@@ -1,4 +1,4 @@
-const logger = require("../util/logger");
+const logger = require("../utils/logger");
 
 const errorHandler = (err, req, res, next) => {
   logger.error(new Error("server error"), err.toString());

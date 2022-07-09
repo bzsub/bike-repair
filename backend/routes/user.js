@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
-const http = require("../util/http");
-const User = require("../model/user");
-const auth = require("../middleware/auth");
+const http = require("../utils/http");
+const User = require("../models/user");
+const auth = require("../middlewares/auth");
 const config = require("../app.config");
 
 router.post("/login", auth({ block: false }), async (req, res) => {

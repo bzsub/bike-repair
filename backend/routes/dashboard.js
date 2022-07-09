@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const User = require("../model/user");
-const auth = require("../middleware/auth");
+const User = require("../models/user");
+const auth = require("../middlewares/auth");
 
 /* these are REST endpoints */
 

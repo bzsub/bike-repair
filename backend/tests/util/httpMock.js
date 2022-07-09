@@ -1,4 +1,4 @@
-const { _instance } = require("../../util/http");
+const { _instance } = require("../../utils/http");
 const axiosMockAdapter = require("axios-mock-adapter");
 const jwt = require("jsonwebtoken");
 
