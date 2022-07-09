@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
 
   const login = async (code, provider) => {
     try {
-      const response = await http.post(config.todo_api + "/user/login", {
+      const response = await http.post(config.todo_api + "/auth/login", {
         code,
         provider,
       });
@@ -46,7 +46,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const register = async (username) => {
-    const response = await post("user/create", { username });
+    const response = await post("auth/create", { username });
     if (response?.status === 200) {
       setToken(response.data.token);
       localStorage.setItem("token", response.data.token);

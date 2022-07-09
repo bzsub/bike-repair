@@ -20,8 +20,10 @@ app.use(morgan(":method :url :status - HOST: :host  - :response-time ms")); // u
 
 const dashboardRoutes = require("./routes/dashboard");
 app.use("/api/dashboards", dashboardRoutes);
-const userRoutes = require("./routes/user.js");
-app.use("/api/user", userRoutes);
+const authRoutes = require("./routes/auth");
+app.use("/api/auth", authRoutes);
+/* const userRoutes = require("./routes/user.js");
+app.use("/api/user", userRoutes); */
 
 app.get("/", (req, res) => {
   console.log("Health check completed");
