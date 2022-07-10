@@ -33,7 +33,6 @@ const AuthProvider = ({ children }) => {
       setToken(response.data.token);
       localStorage.setItem("token", response.data.token);
       setUser(jwt(response.data.token));
-      console.log("user", user)
     } catch (err) {
       console.log(err);
       setToken(null);
@@ -47,8 +46,18 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem("token");
   };
 
-  const register = async (username) => {
-    const response = await post("auth/create", { username });
+  const registerUser = async (username) => {
+    const response = await post("auth/create/user", { username });
+    if (response?.status === 200) {
+      setToken(response.data.token);
+      localStorage.setItem("token", response.data.token);
+      setUser(jwt(response.data.token));
+      console.log("user", user)
+    }
+  };
+
+  const registerShop = async (username, prices) => {
+    const response = await post("auth/create/shop", { username, prices });
     if (response?.status === 200) {
       setToken(response.data.token);
       localStorage.setItem("token", response.data.token);
@@ -67,7 +76,7 @@ const AuthProvider = ({ children }) => {
     // eslint-disable-next-line
   }, []);
 
-  return <AuthContext.Provider value={{ token, user, auth, logout, login, register }}>{children}</AuthContext.Provider>; // provide value for my context
+  return <AuthContext.Provider value={{ token, user, auth, logout, login, registerUser, registerShop }}>{children}</AuthContext.Provider>; // provide value for my context
 };
 
 // custom hook bro

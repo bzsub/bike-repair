@@ -22,10 +22,14 @@ const Input = styled('input')({
 const Register = () => {
   
   const navigate = useNavigate();
-  const { register, user } = useAuth();
+  const { registerUser, registerShop, user } = useAuth();
   
   const [username, setUsername] = useState("");
   const [entity, setEntity] = useState("user");
+
+  const [flatTire, setFlatTire] = useState(0)
+  const [chainSwap, setChainSwap] = useState(0)
+  const [wheelSwap, setWheelSwap] = useState(0)
 
   useEffect(() => {
     if (user.userId) navigate("/profile");
@@ -93,18 +97,23 @@ const Register = () => {
                                 id="outlined-number"
                                 label="flat-tire"
                                 type="number"
+                                value={flatTire}
+                                onChange={e => setFlatTire(e.target.value)}
                                 
                             />
                             <TextField
                                 id="outlined-number"
                                 label="chain-swap"
                                 type="number"
-                                
+                                value={chainSwap}
+                                onChange={e => setChainSwap(e.target.value)}
                             />
                             <TextField
                                 id="outlined-number"
                                 label="wheel-swap"
                                 type="number"
+                                value={wheelSwap}
+                                onChange={e => setWheelSwap(e.target.value)}
                                 
                             />
                         </>
@@ -114,7 +123,14 @@ const Register = () => {
                         fullWidth
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
-                        onClick={() => register(username)}
+                        onClick={() => entity === "user" ? 
+                          registerUser(username) : 
+                          registerShop(username, {
+                            flatTire,
+                            chainSwap,
+                            wheelSwap
+                          }
+                        )}
                     >
                         { entity === 'user' ? "Sign up as User" : "Sign up as Reapair shop" }
                     </Button>

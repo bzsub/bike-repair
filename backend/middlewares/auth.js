@@ -9,7 +9,7 @@ const auth =
 
     jwt.verify(token, process.env.SECRET_KEY, (err, payload) => {
       if (err && block) res.sendStatus(401);
-      res.locals.user = payload;
+      res.locals.entity = payload;
     });
 
     next();

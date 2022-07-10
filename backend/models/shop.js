@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const shopSchema = new mongoose.Schema({
   /* email: { type: String },
   password: { type: String }, */
+  entity: {type: String, default: "shop" },
   providers: {
     google: { type: String, sparse: true, unique: true },
     github: { type: String, sparse: true, unique: true },
@@ -11,9 +12,9 @@ const shopSchema = new mongoose.Schema({
   username: { type: String, required: true },
   //prof_pics: { type: String },
   prices: {
-    "flat-tire": { type: Number, required: true },
-    "chain-swap": { type: Number, required: true },
-    "wheel-swap": { type: Number, required: true },
+    "flatTire": { type: Number, required: true },
+    "chainSwap": { type: Number, required: true },
+    "wheelSwap": { type: Number, required: true },
     /* "pedal-swap": { type: Number, required: true },
     "front-wheel-swap": { type: Number, required: true },
     "rear-wheel-swap": { type: Number, required: true },

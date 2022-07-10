@@ -8,7 +8,7 @@ import { useAuth } from "../providers/auth";
 //Home is now our login page
 const Home = () => {
   const navigate = useNavigate();
-  const { token, auth } = useAuth();
+  const { token, auth, user } = useAuth();
 
   const { counter, increment, decrement } = useCounter("Home");
   const { value, increment: goUp, decrement: goDown } = useGlobalCounter();
@@ -16,6 +16,8 @@ const Home = () => {
   return (
     <div>
       <h3>Home</h3>
+      <p>{user?.userId}</p>
+      <p>{user?.entity}</p>
       <p>{token ? "Logged in" : "Anonymus"}</p>
       <p>
         {token ? (

@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 }); */
 
 const userSchema = new mongoose.Schema({
+  entity: {type: String, default: "user" },
   /* email: { type: String, unique: true },
   password: { type: String }, */
   providers: {
