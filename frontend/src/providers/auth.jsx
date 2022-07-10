@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const registerUser = async (username) => {
-    const response = await post("auth/create/user", { username });
+    const response = await post("/user", { username });
     if (response?.status === 200) {
       setToken(response.data.token);
       localStorage.setItem("token", response.data.token);
@@ -57,7 +57,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const registerShop = async (username, prices) => {
-    const response = await post("auth/create/shop", { username, prices });
+    const response = await post("/shop", { username, prices });
     if (response?.status === 200) {
       setToken(response.data.token);
       localStorage.setItem("token", response.data.token);

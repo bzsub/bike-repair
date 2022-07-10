@@ -15,15 +15,22 @@ morgan.token("host", function (req, res) {
 });
 
 app.use(cors(corsOptions));
-app.use(express.json()); // body-ban erkezo json-t parse-olni tudja
+app.use(express.json()); 
 app.use(morgan(":method :url :status - HOST: :host  - :response-time ms")); // use this middleware on every request
 
-const dashboardRoutes = require("./routes/dashboard");
-app.use("/api/dashboards", dashboardRoutes);
+
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
-/* const userRoutes = require("./routes/user.js");
-app.use("/api/user", userRoutes); */
+
+const ratingRoutes = require("./routes/rating");
+app.use("/api/rating", ratingRoutes);
+
+const shopRoutes = require("./routes/shop");
+app.use("/api/shop", shopRoutes);
+
+const userRoutes = require("./routes/user");
+app.use("/api/user", userRoutes);
+
 
 app.get("/", (req, res) => {
   console.log("Health check completed");

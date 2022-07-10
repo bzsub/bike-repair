@@ -3,8 +3,7 @@ const http = require("../utils/http");
 const User = require("../models/user");
 const Shop = require("../models/shop");
 const config = require("../app.config");
-const UserService = require("../services/user");
-const ShopService = require("../services/shop");
+
 
 const apiLoginWithProvider = async (req, res) => {
     console.log("login attempt", req.body)
@@ -78,33 +77,7 @@ const apiLoginWithProvider = async (req, res) => {
     res.status(200).json({ token });
 }
 
-const apiCreateUser = async (req, res) => {
-    if (!req.body?.username) return res.sendStatus(400);
-
-    const user = await UserService.saveUser({
-        username: req.body.username,
-        providers: res.locals.entity.providers,
-    });
-
-    const token = jwt.sign({ userId: user._id, entity: user.entity, providers: user.providers }, process.env.SECRET_KEY, { expiresIn: "1h" });
-    res.status(200).json({ token });
-}
-
-const apiCreateShop = async (req, res) => {
-    if (!req.body?.username) return res.sendStatus(400);
-
-    const shop = await ShopService.saveShop({
-        username: req.body.username,
-        prices: req.body.prices,
-        providers: res.locals.entity.providers,
-    });
-
-    const token = jwt.sign({ userId: shop._id, entity: shop.entity, providers: shop.providers }, process.env.SECRET_KEY, { expiresIn: "1h" });
-    res.status(200).json({ token });
-}
 
 module.exports = { 
     apiLoginWithProvider,
-    apiCreateUser,
-    apiCreateShop,
 }
