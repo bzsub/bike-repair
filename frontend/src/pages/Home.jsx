@@ -69,8 +69,11 @@ const Home = () => {
   }
 
   useEffect(() => {
-    if (user?.entity === "user") getAllShops()
-    else getRepairsToOneShop()
+    if (user?.entity === "user") {
+      getAllShops()
+    } else {
+      getRepairsToOneShop()
+    }
     // eslint-disable-next-line
   },[])
 

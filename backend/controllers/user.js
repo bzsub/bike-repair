@@ -11,19 +11,19 @@ const apiCreateUser = async (req, res) => {
     });
 
     const token = jwt.sign({ userId: user._id, entity: user.entity, providers: user.providers }, process.env.SECRET_KEY, { expiresIn: "1h" });
-    res.status(200).json({ token });
+    return res.status(200).json({ token });
 }
 
 const apiGetOneUser = async (req, res) => {
     const user = await UserService.getOneUser(req.params.user_id)
-    if (!user) res.sendStatus(400) 
-    res.status(200).json(user);
+    if (!user) return res.sendStatus(400) 
+    return res.status(200).json(user);
 } 
 
 const apiGetSearchedUsers = async (req, res) => {
     const users = await UserService.getSearchedUsers(req.query.search)
-    if (!users) res.sendStatus(400) 
-    res.status(200).json(users);
+    if (!users) return res.sendStatus(400) 
+    return res.status(200).json(users);
 }  
 
 const apiUpdateUser = async (req, res) => {
@@ -34,15 +34,15 @@ const apiUpdateUser = async (req, res) => {
         res.locals.entity.userId !== req.params.user_id
     ) return res.sendStatus(400)
     const user = await UserService.updateUser(req.params.user_id, req.body)
-    if (!user) res.sendStatus(400) 
-    res.sendStatus(200);
+    if (!user) return res.sendStatus(400) 
+    return res.sendStatus(200);
 }
 
 const apiDeleteUser = async (req, res) => { 
     if ( res.locals.entity.userId !== req.params.user_id ) return res.sendStatus(400) 
     const user = await UserService.deleteUser(req.params.user_id)
-    if (!user) res.sendStatus(400) 
-    res.status(200).json(user);
+    if (!user) return res.sendStatus(400) 
+    return res.status(200).json(user);
 }
 
 
