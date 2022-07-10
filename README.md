@@ -2,7 +2,6 @@
 
 This is a simple site, where you can sign up as a biker or as a repair shop. Then as a biker you can browse shops, book repairs and leave a review. The project was a final exam for the bootcamp at CodeCool. Currently still in development. 
 
-[A detailed documentation of the API is available on SwaggerHub](https://app.swaggerhub.com/apis/AGOSTON/OKT/1.0.0).
 
 ## Technologies Used
 
