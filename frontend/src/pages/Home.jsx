@@ -76,7 +76,7 @@ const Home = () => {
       <p>{user?.entity}</p>
       <p>{token ? "Logged in" : "Anonymus"}</p>
      
-      { user.entity === "shop" && repairList.length > 0 && repairList.map(repair => <Box>
+      { user?.entity === "shop" && repairList.length > 0 && repairList.map(repair => <Box>
           <Typography component="p" variant="h5">
             {repair.comment}
           </Typography>
@@ -86,7 +86,7 @@ const Home = () => {
         </Box>)
       }
     
-      {(!token || user.entity === "user") && <Box sx={{ mt: 1 }}>
+      {(!token || user?.entity === "user") && <Box sx={{ mt: 1 }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Shop name</InputLabel>
         <Select

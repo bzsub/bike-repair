@@ -24,7 +24,9 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.16",
     "pino": "^8.0.0",
-    "pino-logflare": "^0.3.12"
+    "pino-logflare": "^0.3.12",
+    "swagger-ui-express": "^4.4.0",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "axios-mock-adapter": "^1.21.1",
