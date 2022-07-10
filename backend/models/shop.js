@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const shopSchema = new mongoose.Schema({
   /* email: { type: String },
   password: { type: String }, */
-  entity: {type: String, default: "shop" },
+  entity: { type: String, default: "shop" },
   providers: {
     google: { type: String, sparse: true, unique: true },
     github: { type: String, sparse: true, unique: true },

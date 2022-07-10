@@ -31,6 +31,9 @@ app.use("/api/shop", shopRoutes);
 const userRoutes = require("./routes/user");
 app.use("/api/user", userRoutes);
 
+const repairRoutes = require("./routes/repair");
+app.use("/api/repair", repairRoutes);
+
 
 app.get("/", (req, res) => {
   console.log("Health check completed");

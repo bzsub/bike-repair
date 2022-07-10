@@ -1,16 +1,14 @@
 const RatingService = require('../services/rating');
 
 
-
 const apiGetRatings = async (req, res) => {
     const ratings = await RatingService.getRatings()
     if (!ratings) res.sendStatus(400) 
     res.json(ratings);
 }   
 
-
 const apiSaveRating = async (req, res) => {
-    if(
+    if (
         !req.body.user_id || 
         !req.body.shop_id || 
         !req.body.comment || 
@@ -22,9 +20,8 @@ const apiSaveRating = async (req, res) => {
     res.json(rating);   
 }  
 
-
 const apiUpdateRating = async (req, res) => {
-    if(
+    if (
         !req.body.user_id || 
         !req.body.shop_id || 
         !req.body.comment || 
@@ -36,9 +33,8 @@ const apiUpdateRating = async (req, res) => {
     res.json(rating); 
 }  
 
-
 const apiDeleteRating = async (req, res) => {
-    if( res.locals.user.userId !== req.params.user_id) return res.sendStatus(400)
+    if ( res.locals.user.userId !== req.params.user_id) return res.sendStatus(400)
     const rating = await RatingService.deleteRating(req.params.rating_id)
     if (!rating) res.sendStatus(400) 
     res.json(rating);

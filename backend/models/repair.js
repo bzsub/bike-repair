@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const repairSchema = new mongoose.Schema({
     user_id: { type: String, required: true },
     shop_id: { type: String, required: true }, 
-    //bike_id : {type:String},
+    //bike_id : { type: String },
     problems:{ type: Array, required: true },
     price:{ type: Number, required: true },
     user_comment:{ type: String, required: true },

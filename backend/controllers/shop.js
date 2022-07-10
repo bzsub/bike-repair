@@ -22,7 +22,7 @@ const apiGetShops = async (req, res) => {
 }  
 
 const apiUpdateShop = async (req, res) => {
-    if( !req.body.prof_pics || 
+    if ( !req.body.prof_pics || 
         !req.body.username || 
         !req.body.bikes || 
         res.locals.user.userId !== req.params.user_id
@@ -33,7 +33,7 @@ const apiUpdateShop = async (req, res) => {
 }
 
 const apiDeleteShop = async (req, res) => { 
-    if( res.locals.user.userId !== req.params.user_id ) return res.sendStatus(400) 
+    if ( res.locals.user.userId !== req.params.user_id ) return res.sendStatus(400) 
     const user = await ShopService.deleteShop(req.params.user_id)
     if (!user) res.sendStatus(400) 
     res.json(user);

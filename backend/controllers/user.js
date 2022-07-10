@@ -21,7 +21,7 @@ const apiGetSearchedUsers = async (req, res) => {
 }  
 
 const apiUpdateUser = async (req, res) => {
-    if( !req.body.prof_pics || 
+    if ( !req.body.prof_pics || 
         !req.body.username || 
         !req.body.bikes || 
         res.locals.user.userId !== req.params.user_id
@@ -32,7 +32,7 @@ const apiUpdateUser = async (req, res) => {
 }
 
 const apiDeleteUser = async (req, res) => { 
-    if( res.locals.user.userId !== req.params.user_id ) return res.sendStatus(400) 
+    if ( res.locals.user.userId !== req.params.user_id ) return res.sendStatus(400) 
     const user = await UserService.deleteUser(req.params.user_id)
     if (!user) res.sendStatus(400) 
     res.json(user);
