@@ -14,6 +14,12 @@ const apiCreateUser = async (req, res) => {
     res.status(200).json({ token });
 }
 
+const apiGetOneUser = async (req, res) => {
+    const user = await UserService.getOneUser(req.params.user_id)
+    if (!user) res.sendStatus(400) 
+    res.json(user);
+} 
+
 const apiGetSearchedUsers = async (req, res) => {
     const users = await UserService.getSearchedUsers(req.query.search)
     if (!users) res.sendStatus(400) 
@@ -41,6 +47,7 @@ const apiDeleteUser = async (req, res) => {
 
 module.exports = { 
     apiCreateUser,
+    apiGetOneUser,
     apiGetSearchedUsers,
     apiUpdateUser,
     apiDeleteUser

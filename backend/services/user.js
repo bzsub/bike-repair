@@ -10,6 +10,15 @@ const getSearchedUsers = async (searchWord) => {
     }
 }
 
+const getOneUser = async (user_id) => {
+    try {
+        const user = await User.findById({ "_id": user_id });
+        return user;
+    } catch (error) {
+        console.log(`Could not find user ${ error }`)
+    }
+}
+
 const saveUser = async (userData) => {
     try {
         const user = await User.create(userData);
@@ -39,6 +48,7 @@ const deleteUser = async (user_id) => {
 
 module.exports = { 
     getSearchedUsers,
+    getOneUser,
     saveUser,
     updateUser,
     deleteUser

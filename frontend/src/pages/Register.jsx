@@ -21,124 +21,136 @@ const Input = styled('input')({
 
 const Register = () => {
   
-  const navigate = useNavigate();
-  const { registerUser, registerShop, user } = useAuth();
-  
-  const [username, setUsername] = useState("");
-  const [entity, setEntity] = useState("user");
+    const navigate = useNavigate();
+    const { registerUser, registerShop, user } = useAuth();
 
-  const [flatTire, setFlatTire] = useState(0)
-  const [chainSwap, setChainSwap] = useState(0)
-  const [wheelSwap, setWheelSwap] = useState(0)
+    const [username, setUsername] = useState("");
+    const [entity, setEntity] = useState("user");
 
-  useEffect(() => {
-    if (user.userId) navigate("/profile");
-    // eslint-disable-next-line
-  }, [user]);
+    const [flatTire, setFlatTire] = useState(0)
+    const [chainSwap, setChainSwap] = useState(0)
+    const [wheelSwap, setWheelSwap] = useState(0)
 
-  return (
-      <Container component="main" maxWidth="xs">
-            <Box
-                sx={{
-                    marginTop: 8,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                }}
-            >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                    { entity === 'user' ? <DirectionsBikeIcon/> : <BuildIcon/> }
-                </Avatar>
-                <Typography component="h1" variant="h5">
+    useEffect(() => {
+        if (user.userId) navigate("/profile");
+        // eslint-disable-next-line
+    }, [user]);
+
+return (
+    <Container component="main" maxWidth="xs">
+
+        <Box
+            sx={{
+                marginTop: 8,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            }}
+        >
+
+            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                { entity === 'user' ? <DirectionsBikeIcon/> : <BuildIcon/> }
+            </Avatar>
+
+            <Typography component="h1" variant="h5">
                 { entity === 'user' ? "Biker Sign up" : "Shop Sign up" }
+            </Typography>
+
+            <Grid container justifyContent="flex-end" sx={{ mt: 2 }}>
+
+                <Typography 
+                    onClick={() => setEntity(entity === "user" ? "shop" : "user")}
+                    variant="subtitle1" 
+                    gutterBottom 
+                    component="div"
+                >
+                    { entity === 'user' ? "Sign up as Reapair shop" : "Sign up as User" }
                 </Typography>
-                <Grid container justifyContent="flex-end" sx={{ mt: 2 }}>
+
+            </Grid>
+
+            <Box sx={{ mt: 1 }}>
+
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="username"
+                    label="Username"
+                    type="text"
+                    id="username"
+                    value={username}
+                    onChange={e => setUsername(e.target.value)}
+                />
+
+                <label htmlFor="icon-button-file">
                     <Typography 
-                        onClick={() => setEntity(entity === "user" ? "shop" : "user")}
+                        onClick={() => navigate("/")}
                         variant="subtitle1" 
                         gutterBottom 
                         component="div"
                     >
-                        { entity === 'user' ? "Sign up as Reapair shop" : "Sign up as User" }
+                        Profile pics
                     </Typography>
-                </Grid>
-                <Box sx={{ mt: 1 }}>
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="username"
-                        label="Username"
-                        type="text"
-                        id="username"
-                        value={username}
-                        onChange={e => setUsername(e.target.value)}
-                    />
-                    <label htmlFor="icon-button-file">
-                        <Typography 
-                            onClick={() => navigate("/")}
-                            variant="subtitle1" 
-                            gutterBottom 
-                            component="div"
-                        >
-                            Profile pics
-                        </Typography>
-                        <Input accept="image/*" id="icon-button-file" type="file"/>
-                        <IconButton color="primary" aria-label="upload picture" component="span">
-                        <PhotoCamera />
-                        </IconButton>
-                    </label>
-                    {
-                        entity === "shop" && <>
-                        <Typography component="h1" variant="h5">
-                            Prices:
-                        </Typography>
-                            <TextField
-                                id="outlined-number"
-                                label="flat-tire"
-                                type="number"
-                                value={flatTire}
-                                onChange={e => setFlatTire(e.target.value)}
-                                
-                            />
-                            <TextField
-                                id="outlined-number"
-                                label="chain-swap"
-                                type="number"
-                                value={chainSwap}
-                                onChange={e => setChainSwap(e.target.value)}
-                            />
-                            <TextField
-                                id="outlined-number"
-                                label="wheel-swap"
-                                type="number"
-                                value={wheelSwap}
-                                onChange={e => setWheelSwap(e.target.value)}
-                                
-                            />
-                        </>
-                    }
-                    <Button
-                        
-                        fullWidth
-                        variant="contained"
-                        sx={{ mt: 3, mb: 2 }}
-                        onClick={() => entity === "user" ? 
-                          registerUser(username) : 
-                          registerShop(username, {
-                            flatTire,
-                            chainSwap,
-                            wheelSwap
-                          }
-                        )}
-                    >
-                        { entity === 'user' ? "Sign up as User" : "Sign up as Reapair shop" }
-                    </Button>
-                </Box>
-               
+                    <Input accept="image/*" id="icon-button-file" type="file"/>
+                    <IconButton color="primary" aria-label="upload picture" component="span">
+                    <PhotoCamera />
+                    </IconButton>
+                </label>
+
+                {
+                    entity === "shop" && <>
+                    <Typography component="h1" variant="h5">
+                        Prices:
+                    </Typography>
+                        <TextField
+                            id="outlined-number"
+                            label="flat-tire"
+                            type="number"
+                            value={flatTire}
+                            onChange={e => setFlatTire(e.target.value)}
+                            
+                        />
+                        <TextField
+                            id="outlined-number"
+                            label="chain-swap"
+                            type="number"
+                            value={chainSwap}
+                            onChange={e => setChainSwap(e.target.value)}
+                        />
+                        <TextField
+                            id="outlined-number"
+                            label="wheel-swap"
+                            type="number"
+                            value={wheelSwap}
+                            onChange={e => setWheelSwap(e.target.value)}
+                            
+                        />
+                    </>
+                }
+
+                <Button
+                    
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                    onClick={() => entity === "user" ? 
+                        registerUser(username) : 
+                        registerShop(username, {
+                        flatTire,
+                        chainSwap,
+                        wheelSwap
+                        }
+                    )}
+                >
+                    { entity === 'user' ? "Sign up as User" : "Sign up as Reapair shop" }
+                </Button>
+
             </Box>
-        </Container>
-  );
-};
+            
+        </Box>
+        
+    </Container>
+)};
 
 export default Register;

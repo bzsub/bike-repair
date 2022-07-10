@@ -19,7 +19,7 @@ function App() {
           path="/profile"
           element={
             <Protected>
-              <Profile /> {/* guarded route */}
+              <Profile />
             </Protected>
           }
         />
