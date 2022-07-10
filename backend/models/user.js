@@ -1,26 +1,25 @@
 const mongoose = require("mongoose");
 
-const todoSchema = new mongoose.Schema({
-  title: { type: String, required: true }, // empty string NONO!
-  content: { type: String, required: true }, // empty string is enough
-  isDone: { type: Boolean, default: false },
-});
-
-const dashboardSchema = new mongoose.Schema({
-  title: { type: String, required: true }, // empty string NONO!
-  todos: [todoSchema], // empty list is default?
-});
+/* const bikeSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  img_urls: { type: Array },
+}); */
 
 const userSchema = new mongoose.Schema({
-  username: { type: String }, // empty string NONO!
+  /* email: { type: String, unique: true },
+  password: { type: String }, */
   providers: {
     google: { type: String, sparse: true, unique: true },
     github: { type: String, sparse: true, unique: true },
   },
-  dashboards: [dashboardSchema], // empty list is default?
+
+  username: { type: String, required: true }, 
+  //prof_pics: { type: String },
+  //bikes: [bikeSchema],
+  //calendarToken
 });
 
-const User = mongoose.model("user", userSchema);
+const User = mongoose.model("User", userSchema);
 module.exports = User;
 
 /*
