@@ -9,6 +9,15 @@ const getShops = async () => {
     }
 }
 
+const getOneShop = async (shop_id) => {
+    try {
+        const shop = await Shop.findById({ "_id": shop_id });
+        return shop;
+    } catch (error) {
+        console.log(`Could not find shop ${ error }`)
+    }
+}
+
 const saveShop = async (shopData) => {
     try {
         const shop = await Shop.create(shopData);
@@ -38,6 +47,7 @@ const deleteShop = async (shop_id) => {
 
 module.exports = { 
     getShops,
+    getOneShop,
     saveShop,
     updateShop,
     deleteShop

@@ -28,20 +28,25 @@ const Profile = () => {
   const [wheelSwap, setWheelSwap] = useState(0)
 
   const getOneUser = async () => {
-    const response = await get(`/user/${user?.userId}`)
+    const response = await get(`/${user?.entity}/${user?.userId}`)
     setUsername(response.data.username)
+    setFlatTire(response.data.prices?.flatTire)
+    setChainSwap(response.data.prices?.chainSwap)
+    setWheelSwap(response.data.prices?.wheelSwap)
   }
 
   const handleUpdate = async () => {
-    const data = {
-      username,
-      flatTire,
-      chainSwap,
-      wheelSwap,
-    }
-    const response = await update(`/user/${user?.userId}`,{
-      username
-    })
+    const data = user?.entity === "user" ? 
+      {username} : 
+      {
+        username,
+        "prices": {
+          flatTire,
+          chainSwap,
+          wheelSwap
+        }
+      }
+    const response = await update(`/${user?.entity}/${user?.userId}`,data)
     console.log(response.data);
   }
 
