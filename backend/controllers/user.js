@@ -17,31 +17,32 @@ const apiCreateUser = async (req, res) => {
 const apiGetOneUser = async (req, res) => {
     const user = await UserService.getOneUser(req.params.user_id)
     if (!user) res.sendStatus(400) 
-    res.json(user);
+    res.status(200).json(user);
 } 
 
 const apiGetSearchedUsers = async (req, res) => {
     const users = await UserService.getSearchedUsers(req.query.search)
     if (!users) res.sendStatus(400) 
-    res.json(users);
+    res.status(200).json(users);
 }  
 
 const apiUpdateUser = async (req, res) => {
-    if ( !req.body.prof_pics || 
-        !req.body.username || 
-        !req.body.bikes || 
-        res.locals.user.userId !== req.params.user_id
+    console.log("update")
+    if ( !req.body.username || 
+        /* !req.body.prof_pics || 
+        !req.body.bikes || */ 
+        res.locals.entity.userId !== req.params.user_id
     ) return res.sendStatus(400)
     const user = await UserService.updateUser(req.params.user_id, req.body)
     if (!user) res.sendStatus(400) 
-    res.json(user);
+    res.sendStatus(200);
 }
 
 const apiDeleteUser = async (req, res) => { 
-    if ( res.locals.user.userId !== req.params.user_id ) return res.sendStatus(400) 
+    if ( res.locals.entity.userId !== req.params.user_id ) return res.sendStatus(400) 
     const user = await UserService.deleteUser(req.params.user_id)
     if (!user) res.sendStatus(400) 
-    res.json(user);
+    res.status(200).json(user);
 }
 
 

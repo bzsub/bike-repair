@@ -11,7 +11,7 @@ export const todoApi = () => {
     try {
       const response = await instance.post(path, data, {
         headers: {
-          "authorization": localStorage.getItem("token"),
+          authorization: localStorage.getItem("token"),
         },
       });
       return response;
@@ -26,7 +26,7 @@ export const todoApi = () => {
     try {
       const response = await instance.get(path, {
         headers: {
-          "authorization": localStorage.getItem("token"),
+          authorization: localStorage.getItem("token"),
         },
       });
       return response;
@@ -41,7 +41,7 @@ export const todoApi = () => {
     try {
       const response = await instance.delete(path, {
         headers: {
-          "authorization": localStorage.getItem("token"),
+          authorization: localStorage.getItem("token"),
         },
       });
       return response;
@@ -56,7 +56,7 @@ export const todoApi = () => {
     try {
       const response = await instance.patch(path, data, {
         headers: {
-          "authorization": localStorage.getItem("token"),
+          authorization: localStorage.getItem("token"),
         },
       });
       return response;
@@ -67,7 +67,7 @@ export const todoApi = () => {
     }
   };
 
-  return { post, get }; // _private_stuff
+  return { post, get, del, update }; // _private_stuff
 };
 
 /*

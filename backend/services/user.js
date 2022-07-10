@@ -29,6 +29,7 @@ const saveUser = async (userData) => {
 }
 
 const updateUser = async (user_id, userData) => {
+    console.log("update service")
     try {
         const user = await User.findOneAndUpdate({"_id": user_id}, userData,  { new: true });
         return user;

@@ -2,7 +2,6 @@ import { React, useState, useContext, createContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../providers/auth";
 import { todoApi } from "../api/todoApi";
-import http from "axios";
 
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -19,11 +18,42 @@ const Input = styled('input')({
 
 const Profile = () => {
   let navigate = useNavigate();
-  const { token, user } = useAuth();
+  const { token, user, logout } = useAuth();
+  const { get, del, update } = todoApi();
+
+  const [username, setUsername] = useState("")
+
+  const [flatTire, setFlatTire] = useState(0)
+  const [chainSwap, setChainSwap] = useState(0)
+  const [wheelSwap, setWheelSwap] = useState(0)
+
+  const getOneUser = async () => {
+    const response = await get(`/user/${user?.userId}`)
+    setUsername(response.data.username)
+  }
+
+  const handleUpdate = async () => {
+    const data = {
+      username,
+      flatTire,
+      chainSwap,
+      wheelSwap,
+    }
+    const response = await update(`/user/${user?.userId}`,{
+      username
+    })
+    console.log(response.data);
+  }
+
+  const handleDelete = async () => {
+    const response = await del(`/${user?.entity}/${user.userId}`)
+    logout()
+    console.log(response.data);
+  }
 
   useEffect(() => {
-    
-  }, [])
+    getOneUser()
+  }, [user])
   
 
 return (
@@ -44,19 +74,6 @@ return (
                 { user?.entity === 'user' ? "Biker Sign up" : "Shop Sign up" }
             </Typography>
 
-            <Grid container justifyContent="flex-end" sx={{ mt: 2 }}>
-
-                <Typography 
-                    
-                    variant="subtitle1" 
-                    gutterBottom 
-                    component="div"
-                >
-                    { user?.entity === 'user' ? "Sign up as Reapair shop" : "Sign up as User" }
-                </Typography>
-
-            </Grid>
-
             <Box sx={{ mt: 1 }}>
 
                 <TextField
@@ -67,7 +84,8 @@ return (
                     label="Username"
                     type="text"
                     id="username"
-                    
+                    value={username}
+                    onChange={e => setUsername(e.target.value)}        
                 />
 
                 <label htmlFor="icon-button-file">
@@ -93,19 +111,25 @@ return (
                         <TextField
                             id="outlined-number"
                             label="flat-tire"
-                            type="number" 
+                            type="number"
+                            value={flatTire}
+                            onChange={e => setFlatTire(e.target.value)}
+                            
                         />
-
                         <TextField
                             id="outlined-number"
                             label="chain-swap"
                             type="number"
+                            value={chainSwap}
+                            onChange={e => setChainSwap(e.target.value)}
                         />
-
                         <TextField
                             id="outlined-number"
                             label="wheel-swap"
                             type="number"
+                            value={wheelSwap}
+                            onChange={e => setWheelSwap(e.target.value)}
+                            
                         />
                     </>
                 }
@@ -114,8 +138,18 @@ return (
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
+                    onClick={handleUpdate}
                 >
-                    { user?.entity === 'user' ? "Sign up as User" : "Sign up as Reapair shop" }
+                    Update
+                </Button>
+
+                <Button              
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                    onClick={handleDelete}
+                >
+                    Delete
                 </Button>
 
             </Box>
