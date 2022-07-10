@@ -16,7 +16,7 @@ const apiCreateShop = async (req, res) => {
 }
 
 const apiGetShops = async (req, res) => {
-    const shops = await ShopService.getShops(req.query.search)
+    const shops = await ShopService.getShops()
     if (!shops) res.sendStatus(400) 
     res.status(200).json(shops);
 }  

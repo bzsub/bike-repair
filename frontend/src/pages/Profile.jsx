@@ -28,7 +28,7 @@ const Profile = () => {
   const [wheelSwap, setWheelSwap] = useState(0)
 
   const getOneUser = async () => {
-    const response = await get(`/${user?.entity}/${user?.userId}`)
+    const response = await get(`/${user.entity}/${user.userId}`)
     setUsername(response.data.username)
     setFlatTire(response.data.prices?.flatTire)
     setChainSwap(response.data.prices?.chainSwap)
@@ -36,7 +36,7 @@ const Profile = () => {
   }
 
   const handleUpdate = async () => {
-    const data = user?.entity === "user" ? 
+    const data = user.entity === "user" ? 
       {username} : 
       {
         username,
@@ -46,12 +46,12 @@ const Profile = () => {
           wheelSwap
         }
       }
-    const response = await update(`/${user?.entity}/${user?.userId}`,data)
+    const response = await update(`/${user.entity}/${user.userId}`,data)
     console.log(response.data);
   }
 
   const handleDelete = async () => {
-    const response = await del(`/${user?.entity}/${user.userId}`)
+    const response = await del(`/${user.entity}/${user.userId}`)
     logout()
     console.log(response.data);
   }

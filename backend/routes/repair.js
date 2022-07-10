@@ -5,6 +5,8 @@ const RepairControl = require("../controllers/repair");
 
 router.get("/", auth({ block: false }), RepairControl.apiGetRepair)
 
+router.get("/shop/:shop_id", auth({ block: true }), RepairControl.apiGetRepairToShop)
+
 router.post("/", auth({ block: true }), RepairControl.apiSaveRepair)
 
 router.patch("/:rating_id", auth({ block: true }), RepairControl.apiUpdateRepair);

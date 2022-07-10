@@ -2,6 +2,7 @@ require("dotenv").config();
 const port = process.env.PORT;
 const mongoose = require("mongoose");
 const app = require("./app");
+const dummyData = require("./utils/dummyData");
 
 mongoose
   .connect(process.env.CONNECTION_STRING)
@@ -9,6 +10,7 @@ mongoose
     console.log("MongoDB connected");
     app.listen(port, () => {
       console.log(`Template is listening on port ${port}. Run: "brew services start mongodb-community"`);
+      dummyData()
     });
   })
   .catch((error) => console.log(error));
