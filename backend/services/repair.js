@@ -14,16 +14,17 @@ const getRepairById = async (repair_id) => {
         const repairs = await Repair.findOne({ "_id": repair_id });
         return repairs;
     } catch (error) {
-        console.log(`Could not get repairs ${ error }`)
+        console.log(`Could not get repairsById ${ error }`)
     }
 }
 
 const getRepairsToShop = async (shop_id) => {
+    console.log("service", shop_id)
     try {
-        const repairs = await Repair.find({ "shop_id": shop_id});
+        const repairs = await Repair.find({ shop_id: shop_id});
         return repairs;
     } catch (error) {
-        console.log(`Could not get repairs ${ error }`)
+        console.log(`Could not get repairsToShop ${ error }`)
     }
 }
 

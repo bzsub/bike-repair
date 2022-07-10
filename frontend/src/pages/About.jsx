@@ -1,9 +1,23 @@
 import { React, useEffect, useState } from "react";
 import { useAuth } from "../providers/auth";
-
+import { todoApi } from "../api/todoApi";
 
 const About = () => {
   const { user, token } = useAuth();
+  const { get } = todoApi();
+
+  const getRepairsToOneShop = async () => {
+    const response = await get(`/repair`)
+    console.log(response.data);
+    //setRepairList(response.data)
+  }
+
+  useEffect(() => {
+    getRepairsToOneShop()
+  
+    
+  }, [])
+  
 
   return (
     <div>

@@ -16,9 +16,9 @@ const apiGetRepairById = async (req, res) => {
 const apiGetRepairToShop = async (req, res) => {
     console.log("controller", req.params.shop_id)
     if ( !req.params.shop_id ) return res.sendStatus(400)
-    const repairs = await RepairService.getRepair(req.params.shop_id)
+    const repairs = await RepairService.getRepairsToShop(req.params.shop_id)
     if (!repairs) res.sendStatus(400) 
-    res.status(200).json(repair);
+    res.status(200).json(repairs);
 } 
 
 const apiSaveRepair = async (req, res) => {

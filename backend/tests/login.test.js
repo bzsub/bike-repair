@@ -30,7 +30,7 @@ describe("POST requests to api/user/login", () => {
     // given
 
     // when
-    const response = await client.post("/api/user/login").send({});
+    const response = await client.post("/api/auth/login").send({});
 
     // then
     expect(response.status).toBe(400);
@@ -41,7 +41,7 @@ describe("POST requests to api/user/login", () => {
     const code = "random";
 
     // when
-    const response = await client.post("/api/user/login").send({ code });
+    const response = await client.post("/api/auth/login").send({ code });
 
     // then
     expect(response.status).toBe(400);
@@ -52,7 +52,7 @@ describe("POST requests to api/user/login", () => {
     const provider = "github";
 
     // when
-    const response = await client.post("/api/user/login").send({ provider });
+    const response = await client.post("/api/auth/login").send({ provider });
 
     // then
     expect(response.status).toBe(400);
@@ -64,7 +64,7 @@ describe("POST requests to api/user/login", () => {
     const provider = "gitlab";
 
     // when
-    const response = await client.post("/api/user/login").send({
+    const response = await client.post("/api/auth/login").send({
       code,
       provider,
     });
@@ -80,7 +80,7 @@ describe("POST requests to api/user/login", () => {
     setupGoogleSuccessResponse("7458tygbhf78");
 
     // when
-    const response = await client.post("/api/user/login").send({
+    const response = await client.post("/api/auth/login").send({
       code,
       provider,
     });
@@ -97,7 +97,7 @@ describe("POST requests to api/user/login", () => {
     setupGoogleSuccessResponse(googleUserId);
 
     // when
-    const response = await client.post("/api/user/login").send({
+    const response = await client.post("/api/auth/login").send({
       code,
       provider,
     });
@@ -117,7 +117,7 @@ describe("POST requests to api/user/login", () => {
     setupGoogleErrorResponse();
 
     // when
-    const response = await client.post("/api/user/login").send({
+    const response = await client.post("/api/auth/login").send({
       code,
       provider,
     });

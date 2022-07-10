@@ -10,7 +10,7 @@ const Repair = () => {
     const { token, user } = useAuth();
     const { get } = todoApi();
 
-    const [repair, setRepair] = useState(null)
+    const [repair, setRepair] = useState("")
 
     const getRepairsById = async () => {
         const response = await get(`/repair/${params.id}`)

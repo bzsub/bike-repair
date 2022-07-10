@@ -15,9 +15,7 @@ const shopRoutes = require("./routes/shop");
 const userRoutes = require("./routes/user");
 const repairRoutes = require("./routes/repair");
 
-morgan.token("host", function (req, res) {
-  return req.hostname;
-});
+morgan.token("host", (req, res) => req.hostname );
 
 app.use(cors({origin: process.env.APP_URL}));
 app.use(express.json()); 

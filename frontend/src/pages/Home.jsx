@@ -37,13 +37,13 @@ const Home = () => {
 
   const [repairList, setRepairList] = useState([])
 
-  //ONLY USER
+  // USER VIEW, to fill the select element
   const getAllShops = async () => {
     const response = await get(`/shop`)
     setShopList(response.data)
   }
 
-  //ONLY USER
+  // USER VIEW, to add a repair
   const addRepair = async () => {
     const response = await post(`/repair`, {
       shop_id: choosenShop._id,
@@ -53,20 +53,18 @@ const Home = () => {
     console.log(response.data);
   }
 
-  //ONLY SHOP
+  // SHOP VIEW, to get all repairs for the shop
   const getRepairsToOneShop = async () => {
     const response = await get(`/repair/shop/${user.userId}`)
     console.log(response.data);
-    //repairList(response.data)
+    setRepairList(response.data)
   }
 
 
   useEffect(() => {
-    if (user?.entity === "shop") {
-      console.log(user);
-      getRepairsToOneShop()
-    }
-    else getAllShops() 
+    if (user?.entity === "user") getAllShops()
+    else getRepairsToOneShop()
+    // eslint-disable-next-line
   },[])
 
   return (
@@ -76,14 +74,18 @@ const Home = () => {
       <p>{user?.entity}</p>
       <p>{token ? "Logged in" : "Anonymus"}</p>
      
-      { user?.entity === "shop" && repairList.length > 0 && repairList.map(repair => <Box>
-          <Typography component="p" variant="h5">
-            {repair.comment}
-          </Typography>
-          <Typography component="p" variant="h5">
-            {repair.user_id}
-          </Typography>
-        </Box>)
+      { 
+        user?.entity === "shop" && repairList.length > 0 && repairList.map(repair => <Box>
+            <Typography component="p" variant="h5">
+              {repair.comment}
+            </Typography>
+            <Typography component="p" variant="h5">
+              {repair.user_id}
+            </Typography>
+            <Typography component="p" variant="h5" onClick={() => navigate(`/repair/${repair._id}`)}>
+              {repair._id}
+            </Typography>
+          </Box>)
       }
     
       {(!token || user?.entity === "user") && <Box sx={{ mt: 1 }}>
@@ -96,7 +98,7 @@ const Home = () => {
           onChange={ e => setChoosenShop(e.target.value)}
           label="shop name"
         >
-          {shopList.length > 0 && shopList.map(repair => <MenuItem value={repair}>{repair.username}</MenuItem> )}
+          {shopList.length > 0 && shopList.map((repair, i) => <MenuItem value={repair} key={i}>{repair.username}</MenuItem> )}
          
         </Select>
       </FormControl>
@@ -112,7 +114,7 @@ const Home = () => {
               value={comment}
               onChange={e => setComment(e.target.value)}
           />
-          <FormGroup>
+          {/* <FormGroup>
             <FormControlLabel control={<Checkbox />} label="flatTire" />
           </FormGroup>
           <FormGroup>
@@ -124,7 +126,7 @@ const Home = () => {
 
           <Typography component="h1" variant="h5">
             Price: {price}
-          </Typography>
+          </Typography> */}
             
           {token ? <Button              
               fullWidth
