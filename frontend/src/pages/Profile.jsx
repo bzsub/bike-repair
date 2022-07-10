@@ -63,9 +63,9 @@ const Profile = () => {
 
 return (
   <Container component="main" maxWidth="xs">
-      <p>{token ? "Logged in" : "Anonymus"}</p>
+      {/* <p>{token ? "Logged in" : "Anonymus"}</p>
       <p>{user?.userId}</p>
-      <p>{user?.entity}</p>
+      <p>{user?.entity}</p> */}
       <Box
             sx={{
                 marginTop: 8,
@@ -75,8 +75,8 @@ return (
             }}
         >
 
-            <Typography component="h1" variant="h5">
-                { user?.entity === 'user' ? "Biker Sign up" : "Shop Sign up" }
+            <Typography component="h1" variant="h2">
+                Profile
             </Typography>
 
             <Box sx={{ mt: 1 }}>

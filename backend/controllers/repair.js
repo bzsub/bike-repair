@@ -9,7 +9,7 @@ const apiGetRepair = async (req, res) => {
 
 const apiGetRepairById = async (req, res) => {
     const repair = await RepairService.getRepairById(req.params.repair_id)
-    if (!repair) res.sendStatus(400) 
+    if (!repair) res.status(400) .json(null)
     res.status(200).json(repair);
 }  
 

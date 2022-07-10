@@ -27,9 +27,9 @@ const Register = () => {
     const [username, setUsername] = useState("");
     const [entity, setEntity] = useState("user");
 
-    const [flatTire, setFlatTire] = useState(0)
-    const [chainSwap, setChainSwap] = useState(0)
-    const [wheelSwap, setWheelSwap] = useState(0)
+    const [flatTire, setFlatTire] = useState("")
+    const [chainSwap, setChainSwap] = useState("")
+    const [wheelSwap, setWheelSwap] = useState("")
 
     useEffect(() => {
         if (user.userId) navigate("/profile");

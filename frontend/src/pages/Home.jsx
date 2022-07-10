@@ -55,7 +55,7 @@ const Home = () => {
 
   // SHOP VIEW, to get all repairs for the shop
   const getRepairsToOneShop = async () => {
-    const response = await get(`/repair/shop/${user.userId}`)
+    const response = await get(`/repair/shop/${user?.userId}`)
     console.log(response.data);
     setRepairList(response.data)
   }
@@ -76,13 +76,16 @@ const Home = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <h3>Home</h3>
+      <Typography component="p" variant="h2">
+        Home
+      </Typography>
+      {/* 
       <p>{user?.userId}</p>
       <p>{user?.entity}</p>
-      <p>{token ? "Logged in" : "Anonymus"}</p>
+      <p>{token ? "Logged in" : "Anonymus"}</p> */}
      
       { 
-        user?.entity === "shop" && repairList.length > 0 && repairList.map(repair => <Box>
+        (user?.entity === "shop" && repairList.length > 0 ) ? repairList.map(repair => <Box>
             <Typography component="p" variant="h5">
               {repair.comment}
             </Typography>
@@ -93,7 +96,11 @@ const Home = () => {
               {repair._id}
             </Typography>
             <Button onClick={() => finishRepair(repair._id)}>Finished</Button>
-          </Box>)
+          </Box>) 
+          :
+          <Typography component="p" variant="h5">
+            You don't have more repairs
+          </Typography>
       }
     
       {(!token || user?.entity === "user") && <Box sx={{ mt: 1 }}>

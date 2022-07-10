@@ -6,7 +6,7 @@ const User = require("../models/user");
 const { startDb, stopDb, deleteAll } = require("./util/inMemoryDb");
 const { setupGoogleSuccessResponse, setupGoogleErrorResponse } = require("./util/httpMock");
 
-describe("POST requests to api/user/login", () => {
+describe("POST requests to api/auth/login", () => {
   let connection;
   let server;
   let client;
