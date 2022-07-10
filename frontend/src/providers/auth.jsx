@@ -33,6 +33,7 @@ const AuthProvider = ({ children }) => {
       setToken(response.data.token);
       localStorage.setItem("token", response.data.token);
       setUser(jwt(response.data.token));
+      console.log("user", user)
     } catch (err) {
       console.log(err);
       setToken(null);
@@ -42,6 +43,7 @@ const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setToken(null);
+    console.log("user", user)
     localStorage.removeItem("token");
   };
 
@@ -51,6 +53,7 @@ const AuthProvider = ({ children }) => {
       setToken(response.data.token);
       localStorage.setItem("token", response.data.token);
       setUser(jwt(response.data.token));
+      console.log("user", user)
     }
   };
 
