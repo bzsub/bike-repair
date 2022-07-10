@@ -23,9 +23,9 @@ const Profile = () => {
 
   const [username, setUsername] = useState("")
 
-  const [flatTire, setFlatTire] = useState(0)
-  const [chainSwap, setChainSwap] = useState(0)
-  const [wheelSwap, setWheelSwap] = useState(0)
+  const [flatTire, setFlatTire] = useState("")
+  const [chainSwap, setChainSwap] = useState("")
+  const [wheelSwap, setWheelSwap] = useState("")
 
   const getOneUser = async () => {
     const response = await get(`/${user.entity}/${user.userId}`)

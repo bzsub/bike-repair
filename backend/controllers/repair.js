@@ -7,10 +7,16 @@ const apiGetRepair = async (req, res) => {
     res.status(200).json(repair);
 }  
 
+const apiGetRepairById = async (req, res) => {
+    const repair = await RepairService.getRepairById(req.params.repair_id)
+    if (!repair) res.sendStatus(400) 
+    res.status(200).json(repair);
+}  
+
 const apiGetRepairToShop = async (req, res) => {
     console.log("controller", req.params.shop_id)
-    if ( !req.params.repair_id ) return res.sendStatus(400)
-    const repairs = await RepairService.getRepair(req.params.repair_id)
+    if ( !req.params.shop_id ) return res.sendStatus(400)
+    const repairs = await RepairService.getRepair(req.params.shop_id)
     if (!repairs) res.sendStatus(400) 
     res.status(200).json(repair);
 } 
@@ -51,6 +57,7 @@ const apiDeleteRepair = async (req, res) => {
 module.exports = { 
     apiGetRepair,
     apiGetRepairToShop,
+    apiGetRepairById,
     apiSaveRepair,
     apiUpdateRepair,
     apiDeleteRepair

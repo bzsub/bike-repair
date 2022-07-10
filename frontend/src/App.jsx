@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
 import Callback from "./pages/Callback";
 import Protected from "./components/Protected";
+import Repair from "./pages/Repair"
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/repair/:id" element={<Repair />} />
+
         <Route
           path="/profile"
           element={

@@ -56,13 +56,17 @@ const Home = () => {
   //ONLY SHOP
   const getRepairsToOneShop = async () => {
     const response = await get(`/repair/shop/${user.userId}`)
-    repairList(response.data)
+    console.log(response.data);
+    //repairList(response.data)
   }
 
 
   useEffect(() => {
-    getAllShops()
-    getRepairsToOneShop()
+    if (user?.entity === "shop") {
+      console.log(user);
+      getRepairsToOneShop()
+    }
+    else getAllShops() 
   },[])
 
   return (
@@ -71,8 +75,18 @@ const Home = () => {
       <p>{user?.userId}</p>
       <p>{user?.entity}</p>
       <p>{token ? "Logged in" : "Anonymus"}</p>
-
-      {(!token || user.entity === "user") ? <Box sx={{ mt: 1 }}>
+     
+      { user.entity === "shop" && repairList.length > 0 && repairList.map(repair => <Box>
+          <Typography component="p" variant="h5">
+            {repair.comment}
+          </Typography>
+          <Typography component="p" variant="h5">
+            {repair.user_id}
+          </Typography>
+        </Box>)
+      }
+    
+      {(!token || user.entity === "user") && <Box sx={{ mt: 1 }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Shop name</InputLabel>
         <Select
@@ -124,19 +138,8 @@ const Home = () => {
             To book a repair please log in
           </Typography>
           }
-    </Box> : 
-    <Box>
-      { 
-        repairList.length > 0 && repairList.map(repair => <>
-          <Typography component="p" variant="h5">
-            {repair.comment}
-          </Typography>
-          <Typography component="p" variant="h5">
-            {repair.user_id}
-          </Typography>
-        </>)
-      }
-    </Box>
+    </Box> 
+    
     
     }
   </Container>

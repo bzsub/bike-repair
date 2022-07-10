@@ -9,6 +9,15 @@ const getRepairs = async () => {
     }
 }
 
+const getRepairById = async (repair_id) => {
+    try {
+        const repairs = await Repair.findOne({ "_id": repair_id });
+        return repairs;
+    } catch (error) {
+        console.log(`Could not get repairs ${ error }`)
+    }
+}
+
 const getRepairsToShop = async (shop_id) => {
     try {
         const repairs = await Repair.find({ "shop_id": shop_id});
@@ -48,6 +57,7 @@ const deleteRepair = async (repair_id) => {
 module.exports = { 
     getRepairs,
     getRepairsToShop,
+    getRepairById,
     saveRepair,
     updateRepair,
     deleteRepair
