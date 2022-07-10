@@ -11,7 +11,7 @@ router.post("/", auth({ block: true }), UserControl.apiCreateUser );
 
 router.patch("/:user_id", auth({ block: true }), UserControl.apiUpdateUser );
 
-router.delete("/:user_id", auth({ block: true }), UserControl.apiDeleteUser );
+router.delete("/:user_id", auth({ block: true }), UserControl.apiDeleteUser ); // isDeleted: true ;)
 
 
 module.exports = router;

@@ -6,7 +6,6 @@ const config = require("../app.config");
 
 
 const apiLoginWithProvider = async (req, res) => {
-    console.log("login attempt", req.body)
     const payload = req.body;
     if (!payload) return res.status(400).send("Nice try");
 

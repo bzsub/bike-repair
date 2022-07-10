@@ -60,6 +60,13 @@ const Home = () => {
     setRepairList(response.data)
   }
 
+  const finishRepair = async (repairId) => {
+    const response = await update(`/repair/${repairId}`,{
+      status: "finished"
+    })
+    getRepairsToOneShop()
+    console.log(response.data)
+  }
 
   useEffect(() => {
     if (user?.entity === "user") getAllShops()
@@ -80,11 +87,12 @@ const Home = () => {
               {repair.comment}
             </Typography>
             <Typography component="p" variant="h5">
-              {repair.user_id}
+              {repair.status}
             </Typography>
             <Typography component="p" variant="h5" onClick={() => navigate(`/repair/${repair._id}`)}>
               {repair._id}
             </Typography>
+            <Button onClick={() => finishRepair(repair._id)}>Finished</Button>
           </Box>)
       }
     

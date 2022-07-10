@@ -35,11 +35,11 @@ const apiSaveRepair = async (req, res) => {
 
 const apiUpdateRepair = async (req, res) => {
     if (
-        !req.body.user_id || 
-        !req.body.shop_id || 
+        !req.body.status /* || 
+         !req.body.shop_id || 
         !req.body.comment || 
         !req.body.problems || 
-        res.locals.entity.userId !== req.params.user_id
+        res.locals.entity.userId !== req.params.user_id */
     ) return res.sendStatus(400)
     const repair = await RepairService.updateRepair(req.params.repair_id, req.body)
     if (!repair) res.sendStatus(400) 

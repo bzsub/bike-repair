@@ -27,9 +27,14 @@ const Repair = () => {
             <h1>Repair</h1>
             {
             repair ? 
-            <p>
-                {repair.comment}
-            </p> :
+            <>
+                <p>
+                    {repair.comment}
+                </p> 
+                <p>
+                    {repair.status}
+                </p> 
+            </> :
             <p>the repair that you're looking for is unavailable</p>  
             }
         </div>

@@ -11,9 +11,9 @@ router.get("/shop/:shop_id", auth({ block: true }), RepairControl.apiGetRepairTo
 
 router.post("/", auth({ block: true }), RepairControl.apiSaveRepair)
 
-router.patch("/:rating_id", auth({ block: true }), RepairControl.apiUpdateRepair);
+router.patch("/:repair_id", auth({ block: true }), RepairControl.apiUpdateRepair);
 
-router.delete("/:rating_id", auth({ block: true }), RepairControl.apiDeleteRepair); // isDeleted: true ;)
+router.delete("/:repair_id", auth({ block: true }), RepairControl.apiDeleteRepair); // isDeleted: true ;)
 
 
 module.exports = router;

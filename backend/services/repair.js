@@ -21,7 +21,7 @@ const getRepairById = async (repair_id) => {
 const getRepairsToShop = async (shop_id) => {
     console.log("service", shop_id)
     try {
-        const repairs = await Repair.find({ shop_id: shop_id});
+        const repairs = await Repair.find({ shop_id: shop_id });
         return repairs;
     } catch (error) {
         console.log(`Could not get repairsToShop ${ error }`)
@@ -39,7 +39,7 @@ const saveRepair = async (repairData) => {
 
 const updateRepair = async (repair_id, repairData) => {
     try {
-        const repair = await Repair.findOneAndUpdate({ "_id": repair_id}, repairData, { new: true });
+        const repair = await Repair.findOneAndUpdate({ "_id": repair_id }, repairData, { new: true });
         return repair;
     } catch (error) {
         console.log(`Could not update repair ${ error }`)

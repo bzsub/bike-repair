@@ -11,7 +11,7 @@ router.post("/", auth({ block: true }), ShopControl.apiCreateShop );
 
 router.patch("/:shop_id", auth({ block: true }), ShopControl.apiUpdateShop );
 
-router.delete("/:shop_id", auth({ block: true }), ShopControl.apiDeleteShop );
+router.delete("/:shop_id", auth({ block: true }), ShopControl.apiDeleteShop ); // isDeleted: true ;)
 
 
 module.exports = router;
