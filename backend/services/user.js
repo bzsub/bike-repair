@@ -30,7 +30,7 @@ const saveUser = async (userData) => {
 
 const updateUser = async (user_id, userData) => {
     try {
-        const user = await User.findOneAndUpdate({"_id": user_id}, userData,  { new: true });
+        const user = await User.findOneAndUpdate({ "_id": user_id }, userData,  { new: true });
         return user;
     } catch (error) {
         console.log(`Could not update user ${ error }`)

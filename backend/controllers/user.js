@@ -35,7 +35,7 @@ const apiUpdateUser = async (req, res) => {
     ) return res.sendStatus(400)
     const user = await UserService.updateUser(req.params.user_id, req.body)
     if (!user) return res.sendStatus(400) 
-    res.sendStatus(200);
+    res.status(200).json(user);
 }
 
 const apiDeleteUser = async (req, res) => { 
