@@ -19,7 +19,6 @@ const getRepairById = async (repair_id) => {
 }
 
 const getRepairsToShop = async (shop_id) => {
-    console.log("service", shop_id)
     try {
         const repairs = await Repair.find({ shop_id: shop_id });
         return repairs;

@@ -88,6 +88,9 @@ const Home = () => {
       { 
         (user?.entity === "shop" && repairList.length > 0 ) ? repairList.map(repair => <Box>
             <Typography component="p" variant="h5">
+              {user?.userId}
+            </Typography>
+            <Typography component="p" variant="h5">
               {repair.comment}
             </Typography>
             <Typography component="p" variant="h5">

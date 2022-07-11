@@ -1,3 +1,4 @@
+const Repair = require('../models/repair');
 const RepairService = require('../services/repair');
 
 
@@ -34,15 +35,17 @@ const apiSaveRepair = async (req, res) => {
 }  
 
 const apiUpdateRepair = async (req, res) => {
-    if (
-        !req.body.status /* || 
+    if ( !req.body ||
+        !req.body.status /* ||
          !req.body.shop_id || 
         !req.body.comment || 
-        !req.body.problems || 
-        res.locals.entity.userId !== req.params.user_id */
+        !req.body.problems || */
     ) return res.sendStatus(400)
+    //CHEK THIS OUT ->
+    //const userCheckingRepair = await Repair.findOne({_id: req.params.repair_id})
+    //if (res.locals.entity.userId !== userCheckingRepair.user_id) return res.sendStatus(400)
     const repair = await RepairService.updateRepair(req.params.repair_id, req.body)
-    if (!repair) return res.sendStatus(400) 
+    //if (!repair) return res.sendStatus(400) 
     res.status(200).json(repair); 
 }  
 
