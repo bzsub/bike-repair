@@ -9,6 +9,24 @@ const getRatings = async () => {
     }
 }
 
+const getRatingsToShop = async (shop_id) => {
+    try {
+        const ratings = await Rating.find({ shop_id: shop_id });
+        return ratings;
+    } catch (error) {
+        console.log(`Could not get ratingsToShop ${ error }`)
+    }
+}
+
+const getRatingsToUser = async (user_id) => {
+    try {
+        const ratings = await Rating.find({ user_id: shop_id });
+        return ratings;
+    } catch (error) {
+        console.log(`Could not get ratingsToShop ${ error }`)
+    }
+}
+
 const saveRating = async (ratingData) => {
     try {
         const rating = await Rating.create(ratingData);
@@ -38,6 +56,8 @@ const deleteRating = async (rating_id) => {
 
 module.exports = { 
     getRatings,
+    getRatingsToShop,
+    getRatingsToUser,
     saveRating,
     updateRating,
     deleteRating

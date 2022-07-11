@@ -58,7 +58,7 @@ const Profile = () => {
 
   useEffect(() => {
     getOneUser()
-  }, [user])
+  }, [token])
   
 
 return (

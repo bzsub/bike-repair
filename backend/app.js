@@ -5,10 +5,6 @@ const cors = require("cors");
 const morgan = require("morgan");
 const errorHandler = require("./middlewares/errorHandler");
 
-const swaggerUi = require('swagger-ui-express');
-YAML = require('yamljs');
-const swaggerDocument = YAML.load("./doc.yaml")
-
 const authRoutes = require("./routes/auth");
 const ratingRoutes = require("./routes/rating");
 const shopRoutes = require("./routes/shop");
@@ -20,8 +16,6 @@ morgan.token("host", (req, res) => req.hostname );
 app.use(cors({origin: process.env.APP_URL}));
 app.use(express.json()); 
 app.use(morgan(":method :url :status - HOST: :host  - :response-time ms")); 
-
-app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/rating", ratingRoutes);
