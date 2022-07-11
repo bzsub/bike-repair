@@ -4,13 +4,13 @@ const RepairService = require('../services/repair');
 const apiGetRepair = async (req, res) => {
     const repair = await RepairService.getRepair()
     if (!repair) return res.sendStatus(400) 
-    return res.status(200).json(repair);
+    res.status(200).json(repair);
 }  
 
 const apiGetRepairById = async (req, res) => {
     const repair = await RepairService.getRepairById(req.params.repair_id)
     if (!repair) return res.status(400) .json(null)
-    return res.status(200).json(repair);
+    res.status(200).json(repair);
 }  
 
 const apiGetRepairToShop = async (req, res) => {
@@ -18,7 +18,7 @@ const apiGetRepairToShop = async (req, res) => {
     if ( !req.params.shop_id ) return res.sendStatus(400)
     const repairs = await RepairService.getRepairsToShop(req.params.shop_id)
     if (!repairs) return res.sendStatus(400) 
-    return res.status(200).json(repairs);
+    res.status(200).json(repairs);
 } 
 
 const apiSaveRepair = async (req, res) => {
@@ -30,7 +30,7 @@ const apiSaveRepair = async (req, res) => {
     ) return res.sendStatus(400)
     const repair = await RepairService.saveRepair(req.body)
     if (!repair) return res.sendStatus(400) 
-    return res.status(200).json(repair);   
+    res.status(200).json(repair);   
 }  
 
 const apiUpdateRepair = async (req, res) => {
@@ -43,14 +43,14 @@ const apiUpdateRepair = async (req, res) => {
     ) return res.sendStatus(400)
     const repair = await RepairService.updateRepair(req.params.repair_id, req.body)
     if (!repair) return res.sendStatus(400) 
-    return res.status(200).json(repair); 
+    res.status(200).json(repair); 
 }  
 
 const apiDeleteRepair = async (req, res) => {
     if ( res.locals.entity.userId !== req.params.user_id) return res.sendStatus(400)
     const repair = await RepairService.deleteRepair(req.params.repair_id)
     if (!repair) return res.sendStatus(400) 
-    return res.status(200).json(repair);
+    res.status(200).json(repair);
 } 
 
 

@@ -12,19 +12,19 @@ const apiCreateShop = async (req, res) => {
     });
 
     const token = jwt.sign({ userId: shop._id, entity: shop.entity, providers: shop.providers }, process.env.SECRET_KEY, { expiresIn: "1h" });
-    return res.status(200).json({ token });
+    res.status(200).json({ token });
 }
 
 const apiGetShops = async (req, res) => {
     const shops = await ShopService.getShops()
     if (!shops) return res.sendStatus(400) 
-    return res.status(200).json(shops);
+    res.status(200).json(shops);
 }  
 
 const apiGetOneShop = async (req, res) => {
     const shop = await ShopService.getOneShop(req.params.shop_id)
     if (!shop) return res.sendStatus(400) 
-    return res.status(200).json(shop);
+    res.status(200).json(shop);
 } 
 
 const apiUpdateShop = async (req, res) => {
@@ -35,14 +35,14 @@ const apiUpdateShop = async (req, res) => {
     ) return res.sendStatus(400)
     const shop = await ShopService.updateShop(req.params.shop_id, req.body)
     if (!shop) return res.sendStatus(400) 
-    return res.status(200).json(shop);
+    res.status(200).json(shop);
 }
 
 const apiDeleteShop = async (req, res) => { 
     if ( res.locals.entity.userId !== req.params.shop_id ) return res.sendStatus(400) 
     const shop = await ShopService.deleteShop(req.params.shop_id)
     if (!shop) return res.sendStatus(400) 
-    return res.status(200).json(shop);
+    res.status(200).json(shop);
 }
 
 

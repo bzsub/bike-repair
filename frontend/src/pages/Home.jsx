@@ -69,11 +69,9 @@ const Home = () => {
   }
 
   useEffect(() => {
-    if (user?.entity === "user") {
-      getAllShops()
-    } else {
-      getRepairsToOneShop()
-    }
+    if (user?.entity === "user") getAllShops()
+    if (user?.entity === "shop") getRepairsToOneShop()
+    
     // eslint-disable-next-line
   },[])
 
@@ -98,7 +96,7 @@ const Home = () => {
             <Typography component="p" variant="h5" onClick={() => navigate(`/repair/${repair._id}`)}>
               {repair._id}
             </Typography>
-            <Button onClick={() => finishRepair(repair._id)}>Finished</Button>
+            {repair.status==="active" && <Button onClick={() => finishRepair(repair._id)}>Finished</Button>}
           </Box>) 
           :
           <Typography component="p" variant="h5">

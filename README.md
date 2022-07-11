@@ -2,7 +2,7 @@
 
 This is a simple site, where you can sign up as a biker or as a repair shop. Then as a biker you can browse shops, book repairs and leave reviews. The project was a final exam for a bootcamp at CodeCool. Currently still in development. 
 
-[SwaggerHub link](https://app.swaggerhub.com/apis/ZSUBRITSBALAZS1995/BIKE_REPAIR/1.0.0).
+[SwaggerHub link](https://app.swaggerhub.com/apis/ZSUBRITSBALAZS1995/BIKE_REPAIR/1.0.0)
 
 ## Technologies Used
 

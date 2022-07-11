@@ -83,7 +83,7 @@ return (
                     onChange={e => setUsername(e.target.value)}
                 />
 
-                <label htmlFor="icon-button-file">
+                {/* <label htmlFor="icon-button-file">
                     <Typography 
                         onClick={() => navigate("/")}
                         variant="subtitle1" 
@@ -96,7 +96,7 @@ return (
                     <IconButton color="primary" aria-label="upload picture" component="span">
                     <PhotoCamera />
                     </IconButton>
-                </label>
+                </label> */}
 
                 {
                     entity === "shop" && <>
