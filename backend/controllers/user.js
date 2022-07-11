@@ -20,11 +20,11 @@ const apiGetOneUser = async (req, res) => {
     res.status(200).json(user);
 } 
 
-const apiGetSearchedUsers = async (req, res) => {
+/* const apiGetSearchedUsers = async (req, res) => {
     const users = await UserService.getSearchedUsers(req.query.search)
     if (!users) return res.sendStatus(400) 
     res.status(200).json(users);
-}  
+}  */ 
 
 const apiUpdateUser = async (req, res) => {
     console.log("update")
@@ -49,7 +49,7 @@ const apiDeleteUser = async (req, res) => {
 module.exports = { 
     apiCreateUser,
     apiGetOneUser,
-    apiGetSearchedUsers,
+    //apiGetSearchedUsers,
     apiUpdateUser,
     apiDeleteUser
 }

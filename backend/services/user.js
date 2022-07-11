@@ -1,6 +1,6 @@
 const User = require("../models/user")
 
-const getSearchedUsers = async (searchWord) => {
+/* const getSearchedUsers = async (searchWord) => {
     try {
         const users = await User.find({ "username": { "$regex": searchWord, "$options": "gi" }});
         //
@@ -8,7 +8,7 @@ const getSearchedUsers = async (searchWord) => {
     } catch (error) {
         console.log(`Could not get users ${ error }`)
     }
-}
+} */
 
 const getOneUser = async (user_id) => {
     try {
@@ -29,7 +29,6 @@ const saveUser = async (userData) => {
 }
 
 const updateUser = async (user_id, userData) => {
-    console.log("update service")
     try {
         const user = await User.findOneAndUpdate({"_id": user_id}, userData,  { new: true });
         return user;
@@ -48,7 +47,7 @@ const deleteUser = async (user_id) => {
 }
 
 module.exports = { 
-    getSearchedUsers,
+    //getSearchedUsers,
     getOneUser,
     saveUser,
     updateUser,

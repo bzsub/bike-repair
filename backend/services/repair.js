@@ -1,13 +1,13 @@
 const Repair = require("../models/repair");
 
-const getRepairs = async () => {
+/* const getRepairs = async () => {
     try {
         const repairs = await Repair.find();
         return repairs;
     } catch (error) {
         console.log(`Could not get repairs ${ error }`)
     }
-}
+} */
 
 const getRepairById = async (repair_id) => {
     try {
@@ -46,20 +46,20 @@ const updateRepair = async (repair_id, repairData) => {
     }
 }
 
-const deleteRepair = async (repair_id) => {
+/* const deleteRepair = async (repair_id) => {
     try {
         const repair = await Repair.findOne({ "_id": repair_id })
         return repair;
     } catch (error) {
         console.log(`Could not delete repair ${ error }`)
     }
-}
+} */
 
 module.exports = { 
-    getRepairs,
+    //getRepairs,
     getRepairsToShop,
     getRepairById,
     saveRepair,
     updateRepair,
-    deleteRepair
+    //deleteRepair
 }

@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const errorHandler = require("./middlewares/errorHandler");
 
 const authRoutes = require("./routes/auth");
-const ratingRoutes = require("./routes/rating");
+//const ratingRoutes = require("./routes/rating");
 const shopRoutes = require("./routes/shop");
 const userRoutes = require("./routes/user");
 const repairRoutes = require("./routes/repair");
@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(morgan(":method :url :status - HOST: :host  - :response-time ms")); 
 
 app.use("/api/auth", authRoutes);
-app.use("/api/rating", ratingRoutes);
+//app.use("/api/rating", ratingRoutes);
 app.use("/api/shop", shopRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/repair", repairRoutes);

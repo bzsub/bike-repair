@@ -1,11 +1,11 @@
 const RepairService = require('../services/repair');
 
 
-const apiGetRepair = async (req, res) => {
+/* const apiGetRepair = async (req, res) => {
     const repair = await RepairService.getRepair()
     if (!repair) return res.sendStatus(400) 
     res.status(200).json(repair);
-}  
+}   */
 
 const apiGetRepairById = async (req, res) => {
     const repair = await RepairService.getRepairById(req.params.repair_id)
@@ -46,19 +46,19 @@ const apiUpdateRepair = async (req, res) => {
     res.status(200).json(repair); 
 }  
 
-const apiDeleteRepair = async (req, res) => {
+/* const apiDeleteRepair = async (req, res) => {
     if ( res.locals.entity.userId !== req.params.user_id) return res.sendStatus(400)
     const repair = await RepairService.deleteRepair(req.params.repair_id)
     if (!repair) return res.sendStatus(400) 
     res.status(200).json(repair);
-} 
+}  */
 
 
 module.exports = { 
-    apiGetRepair,
+    //apiGetRepair,
     apiGetRepairToShop,
     apiGetRepairById,
     apiSaveRepair,
     apiUpdateRepair,
-    apiDeleteRepair
+    //apiDeleteRepair
 }

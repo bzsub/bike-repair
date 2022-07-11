@@ -3,7 +3,7 @@ const auth = require("../middlewares/auth");
 const UserControl = require("../controllers/user")
 
 //NOT IN USE
-router.get("/", auth({ block: false }), UserControl.apiGetSearchedUsers);
+//router.get("/", auth({ block: false }), UserControl.apiGetSearchedUsers);
 
 router.get("/:user_id", auth({ block: false }), UserControl.apiGetOneUser);
 
