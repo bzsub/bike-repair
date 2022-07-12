@@ -5,15 +5,16 @@ import "./index.css";
 import App from "./App";
 
 import { AuthProvider } from "./providers/auth";
-// import ErrorBoundary from "./components/ErrorBoundary";
-// import reportWebVitals from "./reportWebVitals";
+import { ThemeProvider } from "./providers/theme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <AuthProvider>
+    <ThemeProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
+    </ThemeProvider>
   </AuthProvider>
 );
-// reportWebVitals();
+
