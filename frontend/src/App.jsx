@@ -9,6 +9,8 @@ import Callback from "./pages/Callback";
 import Protected from "./components/Protected";
 import Repair from "./pages/Repair"
 
+import SignUp from "./components/shopSignUp/SignUp";
+
 function App() {
   return (
     <div className="App">
@@ -17,6 +19,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/repair/:id" element={<Repair />} />
+
+        <Route path="/test" element={<SignUp />} />
 
         <Route
           path="/profile"

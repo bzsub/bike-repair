@@ -17,8 +17,8 @@ const Navbar = () => {
       <Button onClick={() => nav("/")} variant="contained" size="small">
         Home
       </Button>
-      <Button onClick={() => nav("/about")} variant="contained" size="small">
-        About
+      <Button onClick={() => nav("/test")} variant="contained" size="small">
+        test
       </Button>
       <Button onClick={() => nav("/profile")} variant="contained" size="small">
         Profile

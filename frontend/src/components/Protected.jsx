@@ -4,14 +4,8 @@ import { useAuth } from "../providers/auth";
 
 const Protected = ({ children }) => {
   const { token, user } = useAuth();
-  // const navigate = useNavigate();
+  
   const location = useLocation();
-
-  // useEffect(() => {
-  //   if (!token) navigate("/");
-  //   if (!user.userId) return navigate("/register");
-  //   // eslint-disable-next-line
-  // }, [token, user]);
 
   return (
     <div>

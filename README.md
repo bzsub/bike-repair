@@ -1,4 +1,4 @@
-# BIKE REPAIR APP
+# BIKE REPAIR SITE
 
 This is a simple site, where you can sign up as a biker or as a repair shop. Then as a biker you can browse shops, book repairs and leave reviews. The project was a final exam for a bootcamp at CodeCool. Currently still in development. 
 
