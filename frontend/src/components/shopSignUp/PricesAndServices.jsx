@@ -8,9 +8,12 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-
+import { styled } from '@mui/material/styles';
+import { useTheme } from "../../providers/theme";
 
 const PricesAndServices = ({ prevStep, nextStep, handleFormData, values }) => {
+  const { theme } = useTheme();
+
   const [error, setError] = useState(false);
 
   // after form submit validating the form data using validator
@@ -27,6 +30,12 @@ const PricesAndServices = ({ prevStep, nextStep, handleFormData, values }) => {
       nextStep();
     }
   };
+
+  const CssButton = styled(Button)({
+    backgroundColor:theme.colorOne,
+    color:theme.colorTwo,
+    fontWeight:"700",
+  })
 
   return (
     <Container maxWidth="xs" style={{transition:"0.5s"}}>
@@ -70,23 +79,23 @@ const PricesAndServices = ({ prevStep, nextStep, handleFormData, values }) => {
       </Grid>
       
 
-      <Button              
+      <CssButton              
         fullWidth
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
         onClick={prevStep}
       >
         previous
-      </Button>
+      </CssButton>
 
-      <Button              
+      <CssButton              
         fullWidth
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
         onClick={nextStep}
       >
         next
-      </Button>
+      </CssButton>
   </Box>
 </Container>
 

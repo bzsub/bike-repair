@@ -37,18 +37,21 @@ const Home = () => {
   const navigate = useNavigate();
   const { token, user } = useAuth();
   const { theme } = useTheme();
-
+  
   const { get, post, del, update } = todoApi();
-
+  
   const [price, setPrice] = useState(0)
   const [shopList, setShopList] = useState([])
   const [choosenShop, setChoosenShop] = useState("")
   const [comment, setComment] = useState("")
-
+  
   const [repairList, setRepairList] = useState([])
-
- 
-
+  
+  const ButtonStyle = {
+      backgroundColor:theme.colorOne,
+      color:theme.colorTwo,
+      fontWeight:"700",
+  }
 
   // USER VIEW, to fill the select element
   const getAllShops = async () => {
@@ -89,57 +92,53 @@ const Home = () => {
   },[])
 
   return (
-    <Container component="main" maxWidth="xs" style={{
+    <Container component="main" maxWidth="xs">
 
-    }}>
       <Typography component="p" variant="h2">
         Home
       </Typography>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
+     
      
       { 
-        (user?.entity === "shop" && repairList.length > 0 ) ? repairList.map(repair => <Box sx={{
-          border: "2px solid " + theme.colorOne,
-          borderRadius: "1rem",
-          margin: "2rem 0",
-          padding: "2rem 1rem",
-
-        }}>
+        (user?.entity === "shop" && repairList.length > 0 ) ? repairList.map(repair => <Grid 
+          container 
+          spacing={2} 
+          sx={{
+            border: "2px solid " + theme.colorOne,
+            borderRadius: "1rem",
+            margin: "2rem 0",
+            padding: "2rem 1rem",
+            display:"flex",
+            justifyContent:"space-around",
+            alignItems:"center"
+          }}>
+          <Box> 
             <Typography component="p" variant="h5">
               {user?.userId}
             </Typography>
+
             <Typography component="p" variant="h5">
               {repair.comment}
             </Typography>
+
             <Typography component="p" variant="h5">
               {repair.status}
             </Typography>
-            <Typography component="p" variant="h5" onClick={() => navigate(`/repair/${repair._id}`)}>
+
+            <Typography component="p" variant="h5">
               {repair._id}
             </Typography>
-            <ArrowCircleRightIcon/>
-            {repair.status==="active" && <Button variant="contained" onClick={() => finishRepair(repair._id)}>Finished</Button>}
-          </Box>) 
-          :
-          <Typography component="p" variant="h5">
-            You don't have more repairs
-          </Typography>
+
+            {repair.status==="active" && <Button variant="contained" style={ButtonStyle} onClick={() => finishRepair(repair._id)}>
+              Finished
+            </Button>}
+          </Box>
+          <ArrowCircleRightIcon sx={{fontSize:60}} onClick={() => navigate(`/repair/${repair._id}`)}/>
+        </Grid>)
+        :
+        <Typography component="p" variant="h5">
+          You don't have more repairs
+        </Typography>
       }
     
       {(!token || user?.entity === "user") && <Box sx={{ mt: 1 }}>

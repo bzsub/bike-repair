@@ -12,7 +12,6 @@ import SignUp from "./components/shopSignUp/SignUp";
 
 import { useTheme } from "./providers/theme";
 
-
 function App() {
 
   const { theme } = useTheme();
@@ -23,7 +22,8 @@ function App() {
       backgroundColor:theme.colorTwo,
       color:theme.colorOne,
       minHeight:"100vh",
-      transition:"background 0.4s ease-in-out"
+      transition:"background 0.4s ease-in-out",
+      paddingBottom:"50px",
       }}>
       <Navbar />
       <Routes>
@@ -31,7 +31,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/repair/:id" element={<Repair />} />
 
-        <Route path="/test" element={<SignUp />} />
+        <Route path="/test" element={<Register />} />
 
         <Route
           path="/profile"
@@ -45,7 +45,7 @@ function App() {
           path="/register"
           element={
             <Protected>
-              <Register />
+              <SignUp/>
             </Protected>
           }
         />

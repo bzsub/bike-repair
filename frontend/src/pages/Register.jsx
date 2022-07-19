@@ -79,8 +79,9 @@ return (
                     label="Username"
                     type="text"
                     id="username"
+                    color="red"
                     value={username}
-                    onChange={e => setUsername(e.target.value)}
+                    onChange={e => {console.log("rerender") ;setUsername(e.target.value)}}
                 />
 
                 {/* <label htmlFor="icon-button-file">

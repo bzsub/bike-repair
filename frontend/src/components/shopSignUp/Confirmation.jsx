@@ -6,8 +6,19 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { styled } from '@mui/material/styles';
+import { useTheme } from "../../providers/theme";
+
 
 const Confirmation = ({ prevStep, handleFormData, values }) => {
+  const { theme } = useTheme();
+
+  const CssButton = styled(Button)({
+    backgroundColor:theme.colorOne,
+    color:theme.colorTwo,
+    fontWeight:"700",
+  })
+
   return (
     <Container maxWidth="xs">
 
@@ -20,26 +31,24 @@ const Confirmation = ({ prevStep, handleFormData, values }) => {
       <Typography component="" variant="h2">
         text1
       </Typography>
-      
-      
 
-      <Button              
+      <CssButton              
         fullWidth
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
         onClick={prevStep}
       >
         previous
-      </Button>
+      </CssButton>
 
-      <Button              
+      <CssButton              
         fullWidth
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
         onClick={() => console.log(values)}
       >
-        next
-      </Button>
+        Sign up as Repair Shop
+      </CssButton>
   </Box>
 </Container>
   )
