@@ -8,36 +8,26 @@ const shopSchema = new mongoose.Schema({
     google: { type: String, sparse: true, unique: true },
     github: { type: String, sparse: true, unique: true },
   },
-  
-  username: { type: String, required: true },
-  //prof_pics: { type: String },
+  shopName: { type: String, required: true },
+  email: { type: String, required: true },
+  phone: { type: String, required: true },
+  locations: { 
+    "zipCode": { type: String, required: true },
+    "city": { type: String, required: true },
+    "street": { type: String, required: true },
+    "streetNum": { type: String, required: true },
+    "apartment": { type: String },
+  },
   prices: {
-    "flatTire": { type: Number, required: true },
-    "chainSwap": { type: Number, required: true },
-    "wheelSwap": { type: Number, required: true },
-    /* "pedal-swap": { type: Number, required: true },
-    "front-wheel-swap": { type: Number, required: true },
-    "rear-wheel-swap": { type: Number, required: true },
-    "one-gear-swap": { type: Number, required: true },
-    "general-settings-and-oiling": { type: Number, required: true },
-    "all-gear-swap": { type: Number, required: true }, */
+    "flatTire": { type: String, required: true },
+    "chainSwap": { type: String, required: true },
+    "wheelSwap": { type: String, required: true },
   },
-  /* hours: { 
-    "monday": { type: Array, required: true },
-    "tuesday": { type: Array, required: true },
-    "wednesday": { type: Array, required: true },
-    "thursday": { type: Array, required: true },
-    "friday": { type: Array, required: true },
-    "saturday": { type: Array, required: true },
-    "sunday": { type: Array, required: true },
+  bankInfo: { 
+    "bankName": { type: String, required: true },
+    "IBAN": { type: String, required: true },
   },
-  //bank info, address
-  moreData: { type: String }  */
 });
 
 const Shop = mongoose.model("Shop", shopSchema);
 module.exports = Shop;
-
-/*
-todos: { type: todoSchema, default: () => [] }, // empty list is default?
-*/

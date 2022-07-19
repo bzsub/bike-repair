@@ -3,11 +3,24 @@ const ShopService = require("../services/shop")
 
 
 const apiCreateShop = async (req, res) => {
-    if (!req.body?.username) return res.sendStatus(400);
+    console.log(req.body)
+    if (!req.body 
+        
+        // || !req.body.shopName 
+        // || !req.body.email 
+        // || !req.body.phone 
+        // || !req.body.locations 
+        // || !req.body.prices 
+        // || !req.body.bankInfo 
+    ) return res.sendStatus(400);
 
     const shop = await ShopService.saveShop({
-        username: req.body.username,
+        shopName: req.body.shopName,
+        email: req.body.email,
+        phone: req.body.phone,
+        locations: req.body.locations,
         prices: req.body.prices,
+        bankInfo: req.body.bankInfo,
         providers: res.locals.entity.providers,
     });
 
