@@ -1,20 +1,14 @@
 import React, { useState } from 'react'
 
+import BasicInfo from './BasicInfo';
+import LocationInfo from './LocationInfo';
 import PricesAndServices from './PricesAndServices';
-import NameAndLocation from './NameAndLocation';
 import BankInfo from './BankInfo';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-
-import Typography from '@mui/material/Typography';
 import Confirmation from './Confirmation';
+
 import { Container } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { useTheme } from "../../providers/theme";
 
 const SignUp = () => {
-
-  const { theme } = useTheme();
 
   const [step, setStep] = useState(1)
 
@@ -22,15 +16,20 @@ const SignUp = () => {
 
   const [shopInfo, setShopInfo] = useState({
     shopName: "",
-    socials: [],
-    location: {
+    email:"",
+    phone:"",
+    locations: {
       zipCode: "",
       city: "",
       street: "",
       streetNum: "",
       apartment: "",
     },
-    services: [],
+    prices: {
+      flatTire:"",
+      chainSwap:"",
+      wheelSwap:"",
+    },
     bankInfo: {
       bankName:"",
       IBAN:""
@@ -43,58 +42,55 @@ const SignUp = () => {
 
   const nextStep = () => {
     setStep(step + 1)
-  }
-
-  // const handleInputData = input => e => {
-
-  //   const { value } = e.target;
-
-  //   setShopInfo(prevState => ({
-  //     ...prevState,
-  //     [input]: value
-  //   }));
-  // }
-
-  
+  }  
 
   return (
     <Container maxWidth="xs">
 
       {
-        step === 1 && <NameAndLocation
+        step === 1 && <BasicInfo
           nextStep={nextStep} 
-          values={shopInfo}
+          shopInfo={shopInfo}
+          setShopInfo={setShopInfo}
           entity={entity}
           setEntity={setEntity}
-          // handleFormData={handleInputData}
         />
       }
 
       {
-        step === 2 && <PricesAndServices 
+        step === 2 && <LocationInfo 
           prevStep={prevStep} 
           nextStep={nextStep} 
-          values={shopInfo}
-          // handleFormData={handleInputData}
+          shopInfo={shopInfo}
+          setShopInfo={setShopInfo}
+        />
+      }
+
+      {
+        step === 3 && <PricesAndServices 
+          prevStep={prevStep} 
+          nextStep={nextStep} 
+          shopInfo={shopInfo}
+          setShopInfo={setShopInfo}
         />
       }
       
       { 
-        step === 3 && <BankInfo
+        step === 4 && <BankInfo
         prevStep={prevStep} 
         nextStep={nextStep} 
-        values={shopInfo}
-        // handleFormData={handleInputData}
+        shopInfo={shopInfo}
+        setShopInfo={setShopInfo}
         />
       }
+
       { 
-        step === 4 && <Confirmation
-        prevStep={prevStep} 
-        nextStep={nextStep} 
-        values={shopInfo}
-        // handleFormData={handleInputData}
+        step === 5 && <Confirmation
+        prevStep={prevStep}  
+        shopInfo={shopInfo}
         />
       }
+
     </Container>
   )
 }

@@ -10,8 +10,10 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { styled } from '@mui/material/styles';
 import { useTheme } from "../../providers/theme";
+import BuildIcon from '@mui/icons-material/Build';
 
-const PricesAndServices = ({ prevStep, nextStep, handleFormData, values }) => {
+
+const PricesAndServices = ({ prevStep, nextStep, shopInfo, setShopInfo, values }) => {
   const { theme } = useTheme();
 
   const [error, setError] = useState(false);
@@ -31,73 +33,64 @@ const PricesAndServices = ({ prevStep, nextStep, handleFormData, values }) => {
     }
   };
 
-  const CssButton = styled(Button)({
-    backgroundColor:theme.colorOne,
-    color:theme.colorTwo,
-    fontWeight:"700",
-  })
+
 
   return (
-    <Container maxWidth="xs" style={{transition:"0.5s"}}>
+    <Container maxWidth="xs">
+            <Box sx={{ flexGrow:1, textAlign: "center" }}>
 
-    <Box sx={{ flexGrow:1 }}>
+                <BuildIcon sx={{fontSize:60,mt:3}}/>      
 
-      <Typography component="h1" variant="h2">
-        Prices and Services
-      </Typography>
+                <Typography component="h1" variant="h3" sx={{mt:2}} >
+                Shop Sign up
+                </Typography>
+                <Typography component="h1" variant="h6" sx={{ textAlign: "left", mt:3 }}>
+                Prices and Services:
+                </Typography>
 
-      <Grid container spacing={2}>
-
-        <Grid item xs={12} sm={6} md={12} sx={{textAlign:"center"}}>
-
-          <TextField 
-            label="Shopname" 
-            variant="outlined" 
-          />
-          
-        </Grid>
-
-        <Grid item xs={12} sm={6} md={12} sx={{textAlign:"center"}}>
-          <TextField 
-            
-            label="Shopname" 
-            variant="outlined" 
-          />
-        </Grid>
-        <Grid item xs={12} sm={6} md={12} sx={{textAlign:"center"}}>
-          <TextField 
-            label="Shopname" 
-            variant="outlined" 
-          />
-        </Grid>
-        <Grid item xs={12} sm={6} md={12} sx={{textAlign:"center"}}>
-          <TextField 
-            label="Shopname" 
-            variant="outlined" 
-          />
-        </Grid>
-      </Grid>
-      
-
-      <CssButton              
-        fullWidth
-        variant="contained"
-        sx={{ mt: 3, mb: 2 }}
-        onClick={prevStep}
-      >
-        previous
-      </CssButton>
-
-      <CssButton              
-        fullWidth
-        variant="contained"
-        sx={{ mt: 3, mb: 2 }}
-        onClick={nextStep}
-      >
-        next
-      </CssButton>
-  </Box>
-</Container>
+                <TextField 
+                    fullWidth
+                    type="number"
+                    label="flatTire"
+                    sx={{mt:2}}
+                    value={shopInfo.prices.flatTire}
+                    onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, prices: {...prevShopInfo.prices, flatTire: e.target.value}}))}
+                />
+                <TextField 
+                    fullWidth
+                    type="number"
+                    label="chainSwap"
+                    sx={{mt:2}}
+                    value={shopInfo.prices.chainSwap}
+                    onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, prices: {...prevShopInfo.prices, chainSwap: e.target.value}}))}
+                />
+                <TextField 
+                    fullWidth
+                    type="number"
+                    label="wheelSwap"
+                    sx={{mt:2}}
+                    value={shopInfo.prices.wheelSwap}
+                    onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, prices: {...prevShopInfo.prices, wheelSwap: e.target.value}}))}
+                />
+                
+                <Button              
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2, backgroundColor:theme.colorOne, color:theme.colorTwo}}                
+                    onClick={prevStep}
+                >
+                    previous
+                </Button>
+                <Button              
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2, backgroundColor:theme.colorOne, color:theme.colorTwo}}                
+                    onClick={nextStep}
+                >
+                    next
+                </Button>
+            </Box>
+        </Container>
 
 )}
 

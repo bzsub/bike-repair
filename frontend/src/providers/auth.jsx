@@ -56,14 +56,15 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const registerShop = async (username, prices) => {
-    const response = await post("/shop", { username, prices });
-    if (response?.status === 200) {
-      setToken(response.data.token);
-      localStorage.setItem("token", response.data.token);
-      setUser(jwt(response.data.token));
-      console.log("user", user)
-    }
+  const registerShop = async (...props) => {
+    console.log(...props)
+    // const response = await post("/shop", { ...props });
+    // if (response?.status === 200) {
+    //   setToken(response.data.token);
+    //   localStorage.setItem("token", response.data.token);
+    //   setUser(jwt(response.data.token));
+    //   console.log("shop", user)
+    // }
   };
 
   useEffect(() => {
