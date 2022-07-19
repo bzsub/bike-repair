@@ -29,7 +29,7 @@ const PricesAndServices = ({ prevStep, nextStep, handleFormData, values }) => {
   };
 
   return (
-    <Container maxWidth="xs">
+    <Container maxWidth="xs" style={{transition:"0.5s"}}>
 
     <Box sx={{ flexGrow:1 }}>
 

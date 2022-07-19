@@ -3,41 +3,73 @@ import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../providers/auth";
 import { useTheme } from "../providers/theme";
 import Button from "@mui/material/Button";
+import { styled } from '@mui/material/styles';
+import Switch from '@mui/material/Switch';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { auth, token, logout } = useAuth();
   const { theme, changeTheme } = useTheme();
 
-  const nav = (path) => {
-    console.log("rerouting");
-    navigate(path);
-  };
 
+  const CssButton = styled(Button)({
+    backgroundColor:theme.colorOne,
+    color:theme.colorTwo,
+    fontWeight:"700",
+  });
 
+  const CssFormControlLabel = styled(FormControlLabel)({
+    backgroundColor:theme.colorOne,
+    color:theme.colorTwo,
+    fontWeight:"700",
+  });
+
+  const CssSwitch = styled(Switch)({
+    backgroundColor:theme.colorOne,
+    color:theme.colorTwo,
+    fontWeight:"700",
+  });
+
+  
 
   return (
-    <nav className="navbar">
-      <Button onClick={() => nav("/")} variant="contained" size="small">
+    <nav className="navbar" style={{
+      background:theme.colorOne,
+      padding:"10px"
+      }}>
+      <CssButton onClick={() => navigate("/")} size="small" style={{
+      }}>
         Home
-      </Button>
-      <Button onClick={() => nav("/test")} variant="contained" size="small">
+      </CssButton>
+      <CssButton onClick={() => navigate("/test")} size="small">
         test
-      </Button>
-      <Button onClick={() => nav("/profile")} variant="contained" size="small">
+      </CssButton>
+      <CssButton onClick={() => navigate("/profile")} size="small">
         Profile
-      </Button>
-      <Button onClick={changeTheme}>
-        {theme}
-      </Button>
+      </CssButton>
+      
+      <CssButton onClick={changeTheme}>
+        {theme.name}
+      </CssButton>
+      <FormGroup>
+        <CssFormControlLabel control={
+          <CssSwitch  
+            onClick={changeTheme}   
+            checked={theme.name === "dark"}    
+          />
+        } label="ola" />
+      </FormGroup>
       {token ? (
-        <Button onClick={logout} variant="contained" color="secondary" size="small">
+        <CssButton onClick={logout} size="small">
           Logout
-        </Button>
+        </CssButton>
       ) : (
-        <Button onClick={auth} variant="contained" color="info" size="small">
+        <CssButton onClick={auth} size="small">
           Google login
-        </Button>
+        </CssButton>
       )}
     </nav>
   );

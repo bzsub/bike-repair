@@ -37,7 +37,7 @@ const Register = () => {
     }, [user]);
 
 return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" minHeight="10%">
 
         <Box
             sx={{

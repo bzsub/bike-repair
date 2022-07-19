@@ -6,6 +6,7 @@ import BankInfo from './BankInfo';
 
 import Typography from '@mui/material/Typography';
 import Confirmation from './Confirmation';
+import { Container } from '@mui/material';
 
 
 const SignUp = () => {
@@ -47,7 +48,7 @@ const SignUp = () => {
   }
 
   return (
-    <div>
+    <Container maxWidth="xs">
       <Typography component="h1" variant="h5">
         SignUp
       </Typography>
@@ -85,7 +86,7 @@ const SignUp = () => {
         handleFormData={handleInputData}
         />
       }
-    </div>
+    </Container>
   )
 }
 

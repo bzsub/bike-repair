@@ -9,21 +9,33 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { styled } from '@mui/material/styles';
-
-import IconButton from '@mui/material/IconButton';
-import PhotoCamera from '@mui/icons-material/PhotoCamera';
-import Paper from '@mui/material/Paper';
+import { useTheme } from "../../providers/theme";
 
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+
+
+
 
 const NameAndLocation = ({ nextStep, handleFormData, values }) => {
+
+  const { theme } = useTheme();
+ 
+
+  const CssTextField = styled(TextField)({
+    color:theme.colorOne,
+    
+    '& label.Mui-focused': {
+      color: theme.colorOne,
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: theme.colorOne,
+    },
+    '& .MuiOutlinedInput-root': {
+      '&.Mui-focused fieldset': {
+        borderColor: theme.colorOne,
+      },
+    },
+  });
 
   return (
     <Container maxWidth="xs">
@@ -38,34 +50,34 @@ const NameAndLocation = ({ nextStep, handleFormData, values }) => {
 
           <Grid item xs={12} sm={6} md={12} sx={{textAlign:"center"}}>
 
-            <TextField 
+            <CssTextField 
               label="Shopname" 
-              variant="outlined" 
+              variant="outlined"
             />
             
           </Grid>
 
           <Grid item xs={12} sm={6} md={12} sx={{textAlign:"center"}}>
-            <TextField 
+            <CssTextField 
               
               label="Shopname" 
               variant="outlined" 
             />
           </Grid>
           <Grid item xs={12} sm={6} md={12} sx={{textAlign:"center"}}>
-            <TextField 
+            <CssTextField 
               label="Shopname" 
               variant="outlined" 
             />
           </Grid>
           <Grid item xs={12} sm={6} md={12} sx={{textAlign:"center"}}>
-            <TextField 
+            <CssTextField 
               label="Shopname" 
               variant="outlined" 
             />
           </Grid>
         </Grid>
-        
+
         <Button              
           fullWidth
           variant="contained"

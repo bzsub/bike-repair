@@ -8,12 +8,23 @@ import Navbar from "./components/Navbar";
 import Callback from "./pages/Callback";
 import Protected from "./components/Protected";
 import Repair from "./pages/Repair"
-
 import SignUp from "./components/shopSignUp/SignUp";
 
+import { useTheme } from "./providers/theme";
+
+
 function App() {
+
+  const { theme } = useTheme();
+
   return (
-    <div className="App">
+    <div className="App" 
+    style={{
+      backgroundColor:theme.colorTwo,
+      color:theme.colorOne,
+      minHeight:"100vh",
+      transition:"background 0.4s ease-in-out"
+      }}>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
