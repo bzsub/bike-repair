@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import Home from "./pages/Home";
-import Register from "./pages/Register";
+
+
 import About from "./pages/About";
 import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
@@ -11,6 +11,9 @@ import Repair from "./pages/Repair"
 import SignUp from "./components/shopSignUp/SignUp";
 
 import { useTheme } from "./providers/theme";
+import ShopSearch from "./pages/ShopSearch";
+import Shop from "./pages/Shop";
+import RepairList from "./pages/RepairList";
 
 function App() {
 
@@ -27,11 +30,12 @@ function App() {
       }}>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/repairlist" element={<RepairList />} />
         <Route path="/about" element={<About />} />
         <Route path="/repair/:id" element={<Repair />} />
+        <Route path="/shop/:id" element={<Shop />} />
 
-        <Route path="/test" element={<SignUp />} />
+        <Route path="/shopsearch" element={<ShopSearch />} />
 
         <Route
           path="/profile"

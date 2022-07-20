@@ -32,7 +32,7 @@ const Input = styled('input')({
 
 
 
-const Home = () => {
+const RepairList = () => {
   
   const navigate = useNavigate();
   const { token, user } = useAuth();
@@ -95,7 +95,7 @@ const Home = () => {
     <Container component="main" maxWidth="xs">
 
       <Typography component="p" variant="h2">
-        Home
+        Repairs
       </Typography>
      
      
@@ -200,4 +200,4 @@ const Home = () => {
   </Container>
 )};
 
-export default Home;
+export default RepairList;

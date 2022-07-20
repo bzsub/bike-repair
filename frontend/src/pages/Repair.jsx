@@ -16,20 +16,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { styled } from '@mui/material/styles';
-import Stack from '@mui/material/Stack';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Autocomplete from '@mui/material/Autocomplete';
-import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-const Input = styled('input')({
-  display: 'none',
-});
+
 
 
 const Repair = () => {
@@ -63,7 +50,7 @@ const Repair = () => {
             <ArrowCircleLeftIcon sx={{fontSize:60}} onClick={() => navigate(`/`)}/>       
 
             <Typography component="p" variant="h2">
-                Home
+                Repair
             </Typography>
 
             {
@@ -79,7 +66,7 @@ const Repair = () => {
                     
                 </> :
                 <Typography component="p" variant="h2">
-                    the repair that you're looking for is unavailable
+                    we couldn't find the repair you're looking for 
                 </Typography>
             }
 

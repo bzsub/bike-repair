@@ -40,12 +40,12 @@ const Navbar = () => {
       background:theme.colorOne,
       padding:"10px"
       }}>
-      <CssButton onClick={() => navigate("/")} size="small" style={{
+      <CssButton onClick={() => navigate("/repairlist")} size="small" style={{
       }}>
-        Home
+        repairs
       </CssButton>
-      <CssButton onClick={() => navigate("/test")} size="small">
-        test
+      <CssButton onClick={() => navigate("/shopsearch")} size="small">
+        shop search
       </CssButton>
       <CssButton onClick={() => navigate("/profile")} size="small">
         Profile

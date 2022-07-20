@@ -13,9 +13,8 @@ import Container from '@mui/material/Container';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
-const Input = styled('input')({
-  display: 'none',
-});
+import AlertDialog from "../components/AlertDialog";
+
 
 const Profile = () => {
   let navigate = useNavigate();
@@ -74,6 +73,7 @@ return (
           </Typography>
 
           <TextField
+              sx={{ mt:2, input: { color: theme.colorOne } }}
               margin="normal"
               required
               fullWidth
@@ -94,26 +94,26 @@ return (
             Basic info:
           </Typography>
 
-          <TextField 
+          <TextField
+            sx={{ mt:2, input: { color: theme.colorOne } }} 
             fullWidth
             label="shopname"
-            sx={{mt:2}}
             value={shopInfo.shopName}
             onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, shopName: e.target.value}))}
           />
-          <TextField 
+          <TextField
+            sx={{ mt:2, input: { color: theme.colorOne } }} 
             fullWidth
             label="email"
             type="email"
-            sx={{mt:2}}
             value={shopInfo.email}
             onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, email: e.target.value}))}
           />
-          <TextField 
+          <TextField
+            sx={{ mt:2, input: { color: theme.colorOne } }} 
             fullWidth
             label="phone"
             type="number"
-            sx={{mt:2}}
             value={shopInfo.phone}
             onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, phone: e.target.value}))}
           />
@@ -122,44 +122,49 @@ return (
             Location info:
           </Typography>
 
-          <TextField 
+          <TextField
+            sx={{ mt:2, input: { color: theme.colorOne } }} 
               fullWidth
               label="zipCode"
               type="number"
-              sx={{mt:2}}
+
               value={shopInfo.locations.zipCode}
               onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, locations: {...prevShopInfo.locations, zipCode: e.target.value}}))}
           />
 
-          <TextField 
+          <TextField
+            sx={{ mt:2, input: { color: theme.colorOne } }} 
               fullWidth
               label="city"
-              sx={{mt:2}}
+
               value={shopInfo.locations.city}
               onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, locations: {...prevShopInfo.locations, city: e.target.value}}))}
           />
 
-          <TextField 
+          <TextField
+            sx={{ mt:2, input: { color: theme.colorOne } }} 
               fullWidth
               label="street"
-              sx={{mt:2}}
+
               value={shopInfo.locations.street}
               onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, locations: {...prevShopInfo.locations, street: e.target.value}}))}
           />
 
-          <TextField 
+          <TextField
+            sx={{ mt:2, input: { color: theme.colorOne } }} 
               fullWidth
               label="streetNum"
               type="number"
-              sx={{mt:2}}
+
               value={shopInfo.locations.streetNum}
               onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, locations: {...prevShopInfo.locations, streetNum: e.target.value}}))}
           />
 
-          <TextField 
+          <TextField
+            sx={{ mt:2, input: { color: theme.colorOne } }} 
               fullWidth
               label="apartment"
-              sx={{mt:2}}
+
               value={shopInfo.locations.apartment}
               onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, locations: {...prevShopInfo.locations, apartment: e.target.value}}))}
           />
@@ -168,27 +173,30 @@ return (
             Prices and Services:
           </Typography>
 
-          <TextField 
+          <TextField
+            sx={{ mt:2, input: { color: theme.colorOne } }} 
               fullWidth
               type="number"
               label="flatTire"
-              sx={{mt:2}}
+
               value={shopInfo.prices.flatTire}
               onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, prices: {...prevShopInfo.prices, flatTire: e.target.value}}))}
           />
-          <TextField 
+          <TextField
+            sx={{ mt:2, input: { color: theme.colorOne } }} 
               fullWidth
               type="number"
               label="chainSwap"
-              sx={{mt:2}}
+
               value={shopInfo.prices.chainSwap}
               onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, prices: {...prevShopInfo.prices, chainSwap: e.target.value}}))}
           />
-          <TextField 
+          <TextField
+            sx={{ mt:2, input: { color: theme.colorOne } }} 
               fullWidth
               type="number"
               label="wheelSwap"
-              sx={{mt:2}}
+
               value={shopInfo.prices.wheelSwap}
               onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, prices: {...prevShopInfo.prices, wheelSwap: e.target.value}}))}
           />
@@ -196,18 +204,20 @@ return (
             Bank info:
           </Typography>
 
-          <TextField 
+          <TextField
+            sx={{ mt:2, input: { color: theme.colorOne } }} 
               fullWidth
               label="bankName"
-              sx={{mt:2}}
+
               value={shopInfo.bankInfo.bankName}
               onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, bankInfo: {...prevShopInfo.bankInfo, bankName: e.target.value}}))}
           />
-          <TextField 
+          <TextField
+            sx={{ mt:2, input: { color: theme.colorOne } }} 
               fullWidth
               label="IBAN"
               type="number"
-              sx={{mt:2}}
+
               value={shopInfo.bankInfo.IBAN}
               onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, bankInfo: {...prevShopInfo.bankInfo, IBAN: e.target.value}}))}
           />
