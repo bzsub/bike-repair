@@ -56,12 +56,24 @@ const Repair = () => {
             {
                 repair ? 
                 <>
-                    <Typography component="p" variant="h2">
-                        {repair.comment}
+                    <Typography component="p" variant="h5">
+                        shop name: {repair.shopName}
                     </Typography>
 
-                    <Typography component="p" variant="h2">
-                        {repair.status}
+                    <Typography component="p" variant="h5">
+                        user comment: {repair.comment}
+                    </Typography>
+
+                    <Typography component="p" variant="h5">
+                        status: {repair.status}
+                    </Typography>
+
+                    <Typography component="p" variant="h5">
+                        work to be done: {Object.keys(repair.services).filter(k => repair.services[k]).join(", ") }
+                    </Typography>
+
+                    <Typography component="p" variant="h5">
+                        price: {repair.price} HUF
                     </Typography>
                     
                 </> :

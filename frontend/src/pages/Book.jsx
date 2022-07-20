@@ -67,6 +67,7 @@ const Book = () => {
     setFlatTire(false);
     setChainSwap(false);
     setWheelSwap(false);
+    setComment("")
     console.log(response.data);
   }
 

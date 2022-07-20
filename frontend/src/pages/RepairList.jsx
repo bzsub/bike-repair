@@ -106,19 +106,23 @@ const RepairList = () => {
           }}>
           <Box sx={{width:"80%"}}> 
             <Typography component="p" variant="h5">
-              {repair.shopName}
+              shop name: {repair.shopName}
             </Typography>
 
             <Typography component="p" variant="h5">
-              {repair.comment}
+              user comment: {repair.comment}
             </Typography>
 
             <Typography component="p" variant="h5">
-              {repair.status}
+              status: {repair.status}
             </Typography>
 
             <Typography component="p" variant="h5">
-              {repair.price}
+              work to be done: {Object.keys(repair.services).filter(k => repair.services[k]).join(", ") }
+            </Typography>
+
+            <Typography component="p" variant="h5">
+              price: {repair.price} HUF
             </Typography>
 
             {user?.entity === "shop" && repair.status==="active" && <Button 
