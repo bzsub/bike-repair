@@ -45,7 +45,7 @@ const Navbar = () => {
         repairs
       </CssButton>
       <CssButton onClick={() => navigate("/shopsearch")} size="small">
-        shop search
+        shops
       </CssButton>
       <CssButton onClick={() => navigate("/profile")} size="small">
         Profile

@@ -39,34 +39,31 @@ const RepairList = () => {
   const { theme } = useTheme();
   
   const { get, post, del, update } = todoApi();
-  
-  const [price, setPrice] = useState(0)
-  const [shopList, setShopList] = useState([])
-  const [choosenShop, setChoosenShop] = useState("")
-  const [comment, setComment] = useState("")
-  
+
   const [repairList, setRepairList] = useState([])
   
   const ButtonStyle = {
-      backgroundColor:theme.colorOne,
-      color:theme.colorTwo,
-      fontWeight:"700",
+    backgroundColor:theme.colorOne,
+    color:theme.colorTwo,
   }
 
-  // USER VIEW, to fill the select element
-  const getAllShops = async () => {
-    const response = await get(`/shop`)
-    setShopList(response.data)
-  }
+  
 
   // USER VIEW, to add a repair
-  const addRepair = async () => {
-    const response = await post(`/repair`, {
-      shop_id: choosenShop._id,
-      user_id: user.userId,
-      comment
-    })
+  // const addRepair = async () => {
+  //   const response = await post(`/repair`, {
+  //     shop_id: choosenShop._id,
+  //     user_id: user.userId,
+  //     comment
+  //   })
+  //   console.log(response.data);
+  // }
+
+  // USER VIEW, to get all repairs for the user
+  const getRepairsToOneUser = async () => {
+    const response = await get(`/repair/user/${user?.userId}`)
     console.log(response.data);
+    setRepairList(response.data)
   }
 
   // SHOP VIEW, to get all repairs for the shop
@@ -85,7 +82,7 @@ const RepairList = () => {
   }
 
   useEffect(() => {
-    if (user?.entity === "user") getAllShops()
+    if (user?.entity === "user") getRepairsToOneUser()
     if (user?.entity === "shop") getRepairsToOneShop()
     
     // eslint-disable-next-line
@@ -98,9 +95,13 @@ const RepairList = () => {
         Repairs
       </Typography>
      
-     
-      { 
-        (user?.entity === "shop" && repairList.length > 0 ) ? repairList.map(repair => <Grid 
+      {
+        token ?
+         repairList && repairList.length !== 0 ? 
+          <Typography component="p" variant="h5">
+            You don't have any repairs
+          </Typography>
+          : repairList.map(repair => <Grid 
           container 
           spacing={2} 
           sx={{
@@ -135,14 +136,13 @@ const RepairList = () => {
           </Box>
           <ArrowCircleRightIcon sx={{fontSize:60}} onClick={() => navigate(`/repair/${repair._id}`)}/>
         </Grid>)
-        :
-        <Typography component="p" variant="h5">
-          You don't have any repairs
-        </Typography>
+        : <Typography component="p" variant="h5">
+        To see your orders log in 
+      </Typography>
       }
     
-      {(!token || user?.entity === "user") && <Box sx={{ mt: 1 }}>
-      <FormControl fullWidth>
+
+      {/* <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Shop name</InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -154,19 +154,9 @@ const RepairList = () => {
           {shopList.length > 0 && shopList.map((repair, i) => <MenuItem value={repair} key={i}>{repair.username}</MenuItem> )}
          
         </Select>
-      </FormControl>
+      </FormControl> */}
 
-          <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="comment"
-              label="Comment"
-              type="text"
-              id="comment"
-              value={comment}
-              onChange={e => setComment(e.target.value)}
-          />
+         
           {/* <FormGroup>
             <FormControlLabel control={<Checkbox />} label="flatTire" />
           </FormGroup>
@@ -180,23 +170,7 @@ const RepairList = () => {
           <Typography component="h1" variant="h5">
             Price: {price}
           </Typography> */}
-            
-          {token ? <Button              
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={addRepair}
-          >
-              BOOK REPAIR
-          </Button>:
-          <Typography component="h1" variant="h5">
-            To book a repair please log in
-          </Typography>
-          }
-    </Box> 
-    
-    
-    }
+
   </Container>
 )};
 

@@ -22,6 +22,14 @@ const apiGetRepairToShop = async (req, res) => {
     res.status(200).json(repairs);
 } 
 
+const apiGetRepairToUser = async (req, res) => {
+    console.log("controller", req.params.user_id)
+    if ( !req.params.user_id ) return res.sendStatus(400)
+    const repairs = await RepairService.getRepairsToUser(req.params.user_id)
+    if (!repairs) return res.sendStatus(400) 
+    res.status(200).json(repairs);
+} 
+
 const apiSaveRepair = async (req, res) => {
     if (
         !req.body.user_id || 
@@ -60,6 +68,7 @@ const apiUpdateRepair = async (req, res) => {
 module.exports = { 
     //apiGetRepair,
     apiGetRepairToShop,
+    apiGetRepairToUser,
     apiGetRepairById,
     apiSaveRepair,
     apiUpdateRepair,

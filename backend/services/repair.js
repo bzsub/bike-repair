@@ -27,6 +27,15 @@ const getRepairsToShop = async (shop_id) => {
     }
 }
 
+const getRepairsToUser = async (user_id) => {
+    try {
+        const repairs = await Repair.find({ user_id: user_id });
+        return repairs;
+    } catch (error) {
+        console.log(`Could not get repairsToShop ${ error }`)
+    }
+}
+
 const saveRepair = async (repairData) => {
     try {
         const repair = await Repair.create(repairData);
@@ -57,6 +66,7 @@ const updateRepair = async (repair_id, repairData) => {
 module.exports = { 
     //getRepairs,
     getRepairsToShop,
+    getRepairsToUser,
     getRepairById,
     saveRepair,
     updateRepair,

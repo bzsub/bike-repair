@@ -14,6 +14,7 @@ import { useTheme } from "./providers/theme";
 import ShopSearch from "./pages/ShopSearch";
 import Shop from "./pages/Shop";
 import RepairList from "./pages/RepairList";
+import Home from "./pages/Home";
 
 function App() {
 
@@ -30,12 +31,11 @@ function App() {
       }}>
       <Navbar />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/repairlist" element={<RepairList />} />
-        <Route path="/about" element={<About />} />
         <Route path="/repair/:id" element={<Repair />} />
-        <Route path="/shop/:id" element={<Shop />} />
-
         <Route path="/shopsearch" element={<ShopSearch />} />
+        <Route path="/shop/:id" element={<Shop />} />
 
         <Route
           path="/profile"
@@ -45,6 +45,7 @@ function App() {
             </Protected>
           }
         />
+
         <Route
           path="/register"
           element={
@@ -53,6 +54,7 @@ function App() {
             </Protected>
           }
         />
+        
         <Route path="/callback" element={<Callback />} />
       </Routes>
     </div>

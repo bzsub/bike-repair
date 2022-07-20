@@ -9,6 +9,8 @@ router.get("/:repair_id", auth({ block: false }), RepairControl.apiGetRepairById
 
 router.get("/shop/:shop_id", auth({ block: true }), RepairControl.apiGetRepairToShop)
 
+router.get("/user/:user_id", auth({ block: true }), RepairControl.apiGetRepairToUser)
+
 router.post("/", auth({ block: true }), RepairControl.apiSaveRepair)
 
 router.patch("/:repair_id", auth({ block: true }), RepairControl.apiUpdateRepair);
