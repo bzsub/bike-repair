@@ -98,6 +98,11 @@ const ShopSearch = () => {
                 <ArrowCircleRightIcon sx={{fontSize:60}} onClick={() => navigate(`/shop/${shop._id}`)}/>
               </Grid>)
           }
+          {
+            shopList.filter(shop => shop.shopName.includes(searchWord)).length === 0 && <Typography component="p" variant="h5" sx={{mt:5}}>
+             No shopname matches your search
+          </Typography>
+          }
         </Container>
     )
 }
