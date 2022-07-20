@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../providers/auth";
+
 
 import BasicInfo from './BasicInfo';
 import LocationInfo from './LocationInfo';
@@ -9,6 +12,10 @@ import Confirmation from './Confirmation';
 import { Container } from '@mui/material';
 
 const SignUp = () => {
+
+  let navigate = useNavigate();
+  const { user } = useAuth();
+
 
   const [step, setStep] = useState(1)
 
@@ -43,6 +50,11 @@ const SignUp = () => {
   const nextStep = () => {
     setStep(step + 1)
   }  
+
+  useEffect(() => {
+    if (user.userId) navigate("/profile");
+    // eslint-disable-next-line
+}, [user]);
 
   return (
     <Container maxWidth="xs">

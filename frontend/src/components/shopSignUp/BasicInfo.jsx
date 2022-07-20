@@ -84,29 +84,29 @@ const BasicInfo = ({ nextStep, shopInfo, setShopInfo, entity, setEntity }) => {
             Basic info:
           </Typography>
 
-              <TextField 
-                fullWidth
-                label="shopname"
-                sx={{mt:2}}
-                value={shopInfo.shopName}
-                onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, shopName: e.target.value}))}
-              />
-              <TextField 
-                fullWidth
-                label="email"
-                type="email"
-                sx={{mt:2}}
-                value={shopInfo.email}
-                onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, email: e.target.value}))}
-              />
-              <TextField 
-                fullWidth
-                label="phone"
-                type="number"
-                sx={{mt:2}}
-                value={shopInfo.phone}
-                onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, phone: e.target.value}))}
-              />
+          <TextField 
+            fullWidth
+            label="shopname"
+            sx={{mt:2}}
+            value={shopInfo.shopName}
+            onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, shopName: e.target.value}))}
+          />
+          <TextField 
+            fullWidth
+            label="email"
+            type="email"
+            sx={{mt:2}}
+            value={shopInfo.email}
+            onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, email: e.target.value}))}
+          />
+          <TextField 
+            fullWidth
+            label="phone"
+            type="number"
+            sx={{mt:2}}
+            value={shopInfo.phone}
+            onChange={e => setShopInfo(prevShopInfo => ({...prevShopInfo, phone: e.target.value}))}
+          />
 
             {/* <Grid item xs={12} sm={6} md={12} sx={{textAlign:"center"}}>
               <TextField 

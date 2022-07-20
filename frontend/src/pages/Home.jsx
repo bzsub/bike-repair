@@ -137,7 +137,7 @@ const Home = () => {
         </Grid>)
         :
         <Typography component="p" variant="h5">
-          You don't have more repairs
+          You don't have any repairs
         </Typography>
       }
     

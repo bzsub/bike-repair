@@ -10,7 +10,7 @@ mongoose
     console.log("MongoDB connected");
     app.listen(port, () => {
       console.log(`Template is listening on port ${port}. Run: "brew services start mongodb-community"`);
-      //dummyData()
+      dummyData()
     });
   })
   .catch((error) => console.log(error));

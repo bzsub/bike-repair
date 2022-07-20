@@ -41,7 +41,10 @@ const apiGetOneShop = async (req, res) => {
 } 
 
 const apiUpdateShop = async (req, res) => {
-    if ( !req.body.username || 
+    console.log(req.body)
+    console.log(res.locals.entity.userId)
+    console.log(req.params.shop_id)
+    if ( !req.body.shopName || 
         /* !req.body.prof_pics || 
         !req.body.bikes ||  */
         res.locals.entity.userId !== req.params.shop_id
