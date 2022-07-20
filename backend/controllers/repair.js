@@ -31,6 +31,7 @@ const apiGetRepairToUser = async (req, res) => {
 } 
 
 const apiSaveRepair = async (req, res) => {
+    console.log(req.body)
     if (
         !req.body.user_id || 
         !req.body.shop_id || 

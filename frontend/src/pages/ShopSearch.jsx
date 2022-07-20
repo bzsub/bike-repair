@@ -63,7 +63,8 @@ const ShopSearch = () => {
                   padding: "2rem 1rem",
                   display:"flex",
                   justifyContent:"space-around",
-                  alignItems:"center"
+                  alignItems:"center",
+                  width:"100%"
                 }}>
                 <Box> 
                   <Typography component="p" variant="h5">

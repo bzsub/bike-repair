@@ -43,18 +43,6 @@ const RepairList = () => {
   const [repairList, setRepairList] = useState([])
  
 
-  
-
-  // USER VIEW, to add a repair
-  // const addRepair = async () => {
-  //   const response = await post(`/repair`, {
-  //     shop_id: choosenShop._id,
-  //     user_id: user.userId,
-  //     comment
-  //   })
-  //   console.log(response.data);
-  // }
-
   // USER VIEW, to get all repairs for the user
   const getRepairsToOneUser = async () => {
     const response = await get(`/repair/user/${user?.userId}`)
@@ -121,11 +109,12 @@ const RepairList = () => {
             padding: "2rem 1rem",
             display:"flex",
             justifyContent:"space-around",
-            alignItems:"center"
+            alignItems:"center",
+            width:"100%"
           }}>
-          <Box> 
+          <Box sx={{width:"80%"}}> 
             <Typography component="p" variant="h5">
-              {user?.userId}
+              {repair.shopName}
             </Typography>
 
             <Typography component="p" variant="h5">
@@ -137,11 +126,12 @@ const RepairList = () => {
             </Typography>
 
             <Typography component="p" variant="h5">
-              {repair._id}
+              {repair.price}
             </Typography>
 
             {repair.status==="active" && <Button 
-              variant="contained" 
+              variant="contained"
+              fullWidth 
               sx={{
                 backgroundColor:theme.colorOne,
                 color:theme.colorTwo}}
@@ -169,38 +159,7 @@ const RepairList = () => {
                 Google login
             </Button>
           </>
-      }
-    
-
-      {/* <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Shop name</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={choosenShop}
-          onChange={ e => setChoosenShop(e.target.value)}
-          label="shop name"
-        >
-          {shopList.length > 0 && shopList.map((repair, i) => <MenuItem value={repair} key={i}>{repair.username}</MenuItem> )}
-         
-        </Select>
-      </FormControl> */}
-
-         
-          {/* <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="flatTire" />
-          </FormGroup>
-          <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="chainSwap" />
-          </FormGroup>
-          <FormGroup>
-            <FormControlLabel control={<Checkbox />} label="wheelSwap" />
-          </FormGroup>
-
-          <Typography component="h1" variant="h5">
-            Price: {price}
-          </Typography> */}
-
+      }    
   </Container>
 )};
 

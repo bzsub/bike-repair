@@ -32,7 +32,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/book" element={<Book />} />
+        <Route path="/book" element={
+          <Protected>
+            <Book />
+          </Protected>
+        } />
         <Route path="/repairlist" element={<RepairList />} />
         <Route path="/repair/:id" element={<Repair />} />
         <Route path="/shopsearch" element={<ShopSearch />} />
