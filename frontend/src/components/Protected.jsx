@@ -9,13 +9,17 @@ const Protected = ({ children }) => {
 
   return (
     <div>
-      {!token ? (
-        <Navigate to={"/"} />
-      ) : !user.userId && location.pathname !== "/register" ? (
-        <Navigate to={"/register"} />
-      ) : (
-        children
-      )}
+      {
+        token && user.entity === "shop" && location.pathname === "/book" ? (
+          <Navigate to={"/repairlist"} />
+        ) : !token ? (
+          <Navigate to={"/"} />
+        ) : !user.userId && location.pathname !== "/register" ? (
+          <Navigate to={"/register"} />
+        ) : (
+          children
+        )
+      }
     </div>
   );
 };

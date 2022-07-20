@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  min-width: 320px;
+  min-height: 100vh;
+}
 
 button {
   font-weight: 700 !important;

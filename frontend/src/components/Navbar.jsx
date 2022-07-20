@@ -11,7 +11,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { auth, token, logout } = useAuth();
+  const { auth, token, user, logout } = useAuth();
   const { theme, changeTheme } = useTheme();
 
 
@@ -48,15 +48,13 @@ const Navbar = () => {
       <CssButton onClick={() => navigate("/shopsearch")} size="small">
         shops
       </CssButton>
-      <CssButton onClick={() => navigate("/book")} size="small">
-        book
-      </CssButton>
       <CssButton onClick={() => navigate("/test")} size="small">
         test
       </CssButton>
-      <CssButton onClick={() => navigate("/")} size="small">
-        home
+      { user?.entity === "user" && <CssButton onClick={() => navigate("/book")} size="small">
+        book
       </CssButton>
+      }
       <CssButton onClick={() => navigate("/profile")} size="small">
         Profile
       </CssButton>
