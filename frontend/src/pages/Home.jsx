@@ -34,6 +34,7 @@ const Home = () => {
 
                     <Button 
                         fullWidth
+                        variant="contained"
                         onClick={auth} 
                         sx={{
                             backgroundColor:theme.colorOne,

@@ -19,6 +19,7 @@ const Navbar = () => {
     backgroundColor:theme.colorOne,
     color:theme.colorTwo,
     fontWeight:"700",
+    fontSize:"1.3rem",
   });
 
   const CssFormControlLabel = styled(FormControlLabel)({
@@ -47,12 +48,14 @@ const Navbar = () => {
       <CssButton onClick={() => navigate("/shopsearch")} size="small">
         shops
       </CssButton>
+      <CssButton onClick={() => navigate("/book")} size="small">
+        book
+      </CssButton>
+      <CssButton onClick={() => navigate("/")} size="small">
+        home
+      </CssButton>
       <CssButton onClick={() => navigate("/profile")} size="small">
         Profile
-      </CssButton>
-      
-      <CssButton onClick={changeTheme}>
-        {theme.name}
       </CssButton>
       <FormGroup>
         <CssFormControlLabel control={
@@ -60,7 +63,7 @@ const Navbar = () => {
             onClick={changeTheme}   
             checked={theme.name === "dark"}    
           />
-        } label="ola" />
+        } label={theme.name} />
       </FormGroup>
       {token ? (
         <CssButton onClick={logout} size="small">

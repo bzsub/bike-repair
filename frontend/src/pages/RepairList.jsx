@@ -35,17 +35,13 @@ const Input = styled('input')({
 const RepairList = () => {
   
   const navigate = useNavigate();
-  const { token, user } = useAuth();
+  const { auth, token, user } = useAuth();
   const { theme } = useTheme();
   
   const { get, post, del, update } = todoApi();
 
   const [repairList, setRepairList] = useState([])
-  
-  const ButtonStyle = {
-    backgroundColor:theme.colorOne,
-    color:theme.colorTwo,
-  }
+ 
 
   
 
@@ -89,7 +85,7 @@ const RepairList = () => {
   },[])
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" sx={{textAlign:"center"}}>
 
       <Typography component="p" variant="h2">
         Repairs
@@ -97,10 +93,24 @@ const RepairList = () => {
      
       {
         token ?
-         repairList && repairList.length !== 0 ? 
-          <Typography component="p" variant="h5">
-            You don't have any repairs
-          </Typography>
+        !repairList || repairList.length === 0 ? 
+          <>
+            <Typography component="p" variant="h5" sx={{mt: 2, mb: 2}}>
+              You don't have any repairs
+            </Typography>
+            {user?.entity === "user" && <Button 
+              fullWidth
+              variant="contained"
+              onClick={() => navigate('/book')} 
+              sx={{
+                  backgroundColor:theme.colorOne,
+                  color:theme.colorTwo,
+                  mt:2,
+              }}
+            >
+              Book a repair
+            </Button>}
+          </>
           : repairList.map(repair => <Grid 
           container 
           spacing={2} 
@@ -130,15 +140,35 @@ const RepairList = () => {
               {repair._id}
             </Typography>
 
-            {repair.status==="active" && <Button variant="contained" style={ButtonStyle} onClick={() => finishRepair(repair._id)}>
+            {repair.status==="active" && <Button 
+              variant="contained" 
+              sx={{
+                backgroundColor:theme.colorOne,
+                color:theme.colorTwo}}
+              onClick={() => finishRepair(repair._id)}
+            >
               Finished
             </Button>}
           </Box>
           <ArrowCircleRightIcon sx={{fontSize:60}} onClick={() => navigate(`/repair/${repair._id}`)}/>
         </Grid>)
-        : <Typography component="p" variant="h5">
-        To see your orders log in 
-      </Typography>
+        : <>
+            <Typography component="p" variant="h5">
+              To see your repairs please log in 
+            </Typography>
+            <Button 
+            fullWidth
+            onClick={auth} 
+            sx={{
+                backgroundColor:theme.colorOne,
+                color:theme.colorTwo,
+                padding: "0.7rem 0",
+                mt:2,
+            }}
+            >
+                Google login
+            </Button>
+          </>
       }
     
 

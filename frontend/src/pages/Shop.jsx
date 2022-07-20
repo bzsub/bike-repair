@@ -94,6 +94,19 @@ const Shop = () => {
                                 Noone rated this shop yet, be the first!
                             </Typography>
                     }
+
+                    <Button 
+                        fullWidth
+                        variant="contained"
+                        onClick={() => navigate('/book')} 
+                        sx={{
+                            backgroundColor:theme.colorOne,
+                            color:theme.colorTwo,
+                            mt:2,
+                        }}
+                    >
+                        Book a repair
+                    </Button>
                     
                 </> :
                 <Typography component="p" variant="h2">

@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 
 
-import About from "./pages/About";
+import Book from "./pages/Book";
 import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
 import Callback from "./pages/Callback";
@@ -32,6 +32,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/book" element={<Book />} />
         <Route path="/repairlist" element={<RepairList />} />
         <Route path="/repair/:id" element={<Repair />} />
         <Route path="/shopsearch" element={<ShopSearch />} />
