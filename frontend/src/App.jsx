@@ -15,6 +15,7 @@ import ShopSearch from "./pages/ShopSearch";
 import Shop from "./pages/Shop";
 import RepairList from "./pages/RepairList";
 import Home from "./pages/Home";
+import LoadingMask from "./components/LoadingMask";
 
 function App() {
 

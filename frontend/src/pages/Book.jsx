@@ -72,6 +72,7 @@ const Book = () => {
 
   useEffect(() => {
     getShops()
+    // eslint-disable-next-line
   }, [])
   
   return (
@@ -84,8 +85,8 @@ const Book = () => {
       <FormControl fullWidth sx={{mt:4,mb:4}}>
         <InputLabel id="demo-simple-select-label">Shop name</InputLabel>
         <Select
+          sx={{color: theme.colorOne}}
           label="shop name"
-          
           value={choosenShop}
           onChange={ e =>{
              setChoosenShop(e.target.value);
@@ -115,7 +116,6 @@ const Book = () => {
           </FormGroup>
           <FormGroup>
             <FormControlLabel 
-              
               control={<Checkbox 
                 value={chainSwap}
                 checked={chainSwap === true}
@@ -147,9 +147,9 @@ const Book = () => {
           </Typography>
 
           <TextField 
+            sx={{ mt:2, input: { color: theme.colorOne } }}
             fullWidth
             label="comment"
-            sx={{mt:2}}
             value={comment}
             onChange={e => setComment(e.target.value)}
           />

@@ -51,6 +51,9 @@ const Navbar = () => {
       <CssButton onClick={() => navigate("/book")} size="small">
         book
       </CssButton>
+      <CssButton onClick={() => navigate("/test")} size="small">
+        test
+      </CssButton>
       <CssButton onClick={() => navigate("/")} size="small">
         home
       </CssButton>

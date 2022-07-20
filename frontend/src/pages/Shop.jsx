@@ -7,15 +7,9 @@ import { todoApi } from "../api/todoApi";
 
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import LoadingMask from '../components/LoadingMask';
 
 const Shop = () => {
     let params = useParams()
@@ -24,15 +18,21 @@ const Shop = () => {
     const { token, user } = useAuth();
     const { theme } = useTheme();
     
+    const [isLoading, setIsLoading] = useState(false)
+
     const { get } = todoApi();
 
     const [shop, setShop] = useState("")
     const [repairs, setRepairs] = useState([])
 
     const getShopById = async () => {
+        setIsLoading(true)
         const response = await get(`/shop/${params.id}`)
         console.log(response.data);
         setShop(response.data)
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 700);
     }
 
     // const getRepairsToShop = async () => {
@@ -43,6 +43,7 @@ const Shop = () => {
 
     useEffect(() => {
         getShopById()
+        // eslint-disable-next-line
     },[])
 
     return (
@@ -51,6 +52,10 @@ const Shop = () => {
         }}>
 
             <ArrowCircleLeftIcon sx={{fontSize:60, textAlign:"left"}} onClick={() => navigate(`/shopsearch`)}/>       
+
+            { 
+                isLoading && <LoadingMask/>
+            }
 
             {
                 shop ? 

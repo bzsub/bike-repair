@@ -4,31 +4,16 @@ import { useAuth } from "../providers/auth";
 import { useTheme } from "../providers/theme";
 import { todoApi } from "../api/todoApi";
 
-
+import LoadingMask from "../components/LoadingMask";
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { styled } from '@mui/material/styles';
-import Stack from '@mui/material/Stack';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Autocomplete from '@mui/material/Autocomplete';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-const Input = styled('input')({
-  display: 'none',
-});
+
 
 
 
@@ -39,6 +24,8 @@ const RepairList = () => {
   const { theme } = useTheme();
   
   const { get, post, del, update } = todoApi();
+
+  const [isLoading, setIsLoading] = useState(false)
 
   const [repairList, setRepairList] = useState([])
  
@@ -66,9 +53,12 @@ const RepairList = () => {
   }
 
   useEffect(() => {
+    setIsLoading(true)
     if (user?.entity === "user") getRepairsToOneUser()
     if (user?.entity === "shop") getRepairsToOneShop()
-    
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 700);
     // eslint-disable-next-line
   },[])
 
@@ -78,7 +68,9 @@ const RepairList = () => {
       <Typography component="p" variant="h2">
         Repairs
       </Typography>
-     
+      {
+        isLoading && <LoadingMask/> 
+      }
       {
         token ?
         !repairList || repairList.length === 0 ? 
@@ -129,7 +121,7 @@ const RepairList = () => {
               {repair.price}
             </Typography>
 
-            {repair.status==="active" && <Button 
+            {user?.entity === "shop" && repair.status==="active" && <Button 
               variant="contained"
               fullWidth 
               sx={{

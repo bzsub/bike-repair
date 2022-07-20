@@ -15,25 +15,32 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import AlertDialog from "../components/AlertDialog";
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
-
+import LoadingMask from '../components/LoadingMask';
 
 const ShopSearch = () => {
     let navigate = useNavigate();
-    const { user, token } = useAuth();
+
     const { theme } = useTheme();
     const { get } = todoApi();
+
+    const [isLoading, setIsLoading] = useState(false)
 
     const [searchWord, setSearchWord] = useState("")
     const [shopList, setShopList] = useState([])
     
     const getAllShops = async () => {
+        setIsLoading(true)
         const response = await get(`/shop`)
         console.log(response.data)
         setShopList(response.data)
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 700);
     }
 
     useEffect(() => {
         getAllShops()
+        // eslint-disable-next-line
     }, [])
     
 
@@ -41,6 +48,9 @@ const ShopSearch = () => {
         <Container component="main" maxWidth="xs" sx={{
             textAlign:"center",
         }}>
+            {
+                isLoading && <LoadingMask/>
+            }
             <Typography component="p" variant="h2">
                 Shop search
             </Typography>

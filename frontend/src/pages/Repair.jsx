@@ -6,16 +6,9 @@ import { todoApi } from "../api/todoApi";
 
 
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import LoadingMask from '../components/LoadingMask';
 
 
 
@@ -28,14 +21,18 @@ const Repair = () => {
     
     const { get } = todoApi();
     
-    
+    const [isLoading, setIsLoading] = useState(false)
 
     const [repair, setRepair] = useState("")
 
     const getRepairsById = async () => {
+        setIsLoading(true)
         const response = await get(`/repair/${params.id}`)
         console.log(response.data);
         setRepair(response.data)
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 700);
     }
 
     useEffect(() => {
@@ -47,7 +44,10 @@ const Repair = () => {
             textAlign:"center",
         }}>
 
-            <ArrowCircleLeftIcon sx={{fontSize:60}} onClick={() => navigate(`/`)}/>       
+            {
+                isLoading && <LoadingMask/>
+            }
+            <ArrowCircleLeftIcon sx={{fontSize:60}} onClick={() => navigate(`/repairlist`)}/>       
 
             <Typography component="p" variant="h2">
                 Repair

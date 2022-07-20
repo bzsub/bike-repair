@@ -6,21 +6,18 @@ import { todoApi } from "../api/todoApi";
 
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { styled } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
-import PhotoCamera from '@mui/icons-material/PhotoCamera';
-import AlertDialog from "../components/AlertDialog";
+import LoadingMask from "../components/LoadingMask";
 
 
 const Profile = () => {
-  let navigate = useNavigate();
+
   const { token, user, logout } = useAuth();
   const { theme } = useTheme();
   const { get, del, update } = todoApi();
+  const [isLoading, setIsLoading] = useState(false)
 
   // FOR USER
   const [username, setUsername] = useState("")
@@ -29,35 +26,54 @@ const Profile = () => {
   const [shopInfo, setShopInfo] = useState("")
 
   const getOneEntity = async () => {
+    setIsLoading(true)
     const response = await get(`/${user.entity}/${user.userId}`)
     console.log(response.data);
     user.entity === "user" ? 
     setUsername(response.data.username) :
     setShopInfo(response.data)
     console.log(shopInfo)
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 700);
   }
 
   const handleUpdate = async () => {
+    setIsLoading(true)
     const data = user.entity === "user" ? 
-      {username} : 
-      {...shopInfo}
+    {username} : 
+    {...shopInfo}
     const response = await update(`/${user.entity}/${user.userId}`, data)
-    console.log(response.data);
+    getOneEntity()
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 700);
+    // console.log(response.data);
   }
 
   const handleDelete = async () => {
+    setIsLoading(true)
     const response = await del(`/${user.entity}/${user.userId}`)
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 700);
     logout()
-    console.log(response.data);
+    // console.log(response.data);
   }
 
   useEffect(() => {
     getOneEntity()
+    // eslint-disable-next-line
   }, [token])
   
 
 return (
   <Container component="main" maxWidth="xs">
+
+  {
+    isLoading && <LoadingMask/>
+  }
+
     <Box sx={{
         marginTop: 8,
         display: 'flex',
