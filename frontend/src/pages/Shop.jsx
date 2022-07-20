@@ -48,6 +48,7 @@ const Shop = () => {
 
     return (
         <Container component="main" maxWidth="xs" sx={{
+            mt:10,
             textAlign:"center",
         }}>
 
@@ -60,42 +61,39 @@ const Shop = () => {
             {
                 shop ? 
                 <>
-                    <Typography component="p" variant="h2">
-                        {shop.shopName}
+                    <Typography component="p" variant="h5">
+                        shop name: {shop.shopName}
                     </Typography>
-                    <Typography component="p" variant="h2">
-                        {shop.phone}
-                    </Typography>
-
-                    <Typography component="p" variant="h2">
-                        {shop.email}
+                    <Typography component="p" variant="h5">
+                        phone: {shop.phone}
                     </Typography>
 
-                    <Typography component="p" variant="h2">
-                        {shop.locations.street}
+                    <Typography component="p" variant="h5">
+                        email: {shop.email}
                     </Typography>
 
-                    <Typography component="p" variant="h2">
-                        {shop.locations.streetNum}
+                    <Typography component="p" variant="h5">
+                        address: {shop.locations.zipCode}. {shop.locations.street}, {shop.locations.streetNum}
                     </Typography>
 
-                    <Typography component="p" variant="h2">
-                        {shop.bankInfo.bankName}
+                
+                    <Typography component="p" variant="h5">
+                        bank name: {shop.bankInfo.bankName}
                     </Typography>
 
-                    <Typography component="p" variant="h2">
-                        {shop.bankInfo.IBAN}
+                    <Typography component="p" variant="h5">
+                        IBAN: {shop.bankInfo.IBAN}
                     </Typography>
 
-                    <Typography component="p" variant="h2">
+                    <Typography component="p" variant="h5">
                         ratings:
                     </Typography>
                     {
                         repairs.length > 0 ? 
-                            repairs.map(repair => <Typography component="p" variant="h2">
+                            repairs.map(repair => <Typography component="p" variant="h5">
                             ratings:
                             </Typography>) : 
-                            <Typography component="p" variant="h2">
+                            <Typography component="p" variant="h5">
                                 Noone rated this shop yet, be the first!
                             </Typography>
                     }

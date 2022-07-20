@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../providers/auth";
 import { useTheme } from "../providers/theme";
 import Button from "@mui/material/Button";
@@ -47,9 +47,6 @@ const Navbar = () => {
       </CssButton>
       <CssButton onClick={() => navigate("/shopsearch")} size="small">
         shops
-      </CssButton>
-      <CssButton onClick={() => navigate("/test")} size="small">
-        test
       </CssButton>
       { user?.entity === "user" && <CssButton onClick={() => navigate("/book")} size="small">
         book

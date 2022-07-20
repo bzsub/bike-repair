@@ -41,6 +41,7 @@ const Repair = () => {
 
     return (
         <Container component="main" maxWidth="xs" sx={{
+            mt:10,
             textAlign:"center",
         }}>
 

@@ -64,11 +64,12 @@ const Book = () => {
   }, [])
   
   return (
-    <Container component="main" maxWidth="xs" sx={{
+    <Container component="main" maxWidth="xs" sx={{mt:10,
       textAlign:"center",
     }}>
       <Typography component="p" variant="h2">
-          Book a repair
+          Book a 
+          Repair
       </Typography>
       <FormControl fullWidth sx={{mt:4,mb:4}}>
         <InputLabel id="demo-simple-select-label">Shop name</InputLabel>

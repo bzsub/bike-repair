@@ -46,12 +46,14 @@ const ShopSearch = () => {
 
     return (
         <Container component="main" maxWidth="xs" sx={{
+            mt:10,
             textAlign:"center",
         }}>
             {
                 isLoading && <LoadingMask/>
             }
-            <Typography component="p" variant="h2">
+            <Typography component="p" variant="h2"
+            sx={{mt:2, mb:3}}>
                 Shop search
             </Typography>
             <TextField

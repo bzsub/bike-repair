@@ -15,7 +15,6 @@ import ShopSearch from "./pages/ShopSearch";
 import Shop from "./pages/Shop";
 import RepairList from "./pages/RepairList";
 import Home from "./pages/Home";
-import Test from "./pages/Test"
 
 function App() {
 
@@ -42,7 +41,6 @@ function App() {
         <Route path="/repair/:id" element={<Repair />} />
         <Route path="/shopsearch" element={<ShopSearch />} />
         <Route path="/shop/:id" element={<Shop />} />
-        <Route path="/test" element={<Test />} />
 
         <Route
           path="/profile"

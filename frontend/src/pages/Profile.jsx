@@ -68,7 +68,7 @@ const Profile = () => {
   
 
 return (
-  <Container component="main" maxWidth="xs">
+  <Container component="main"  maxWidth="xs" sx={{mt:10}}>
 
   {
     isLoading && <LoadingMask/>
