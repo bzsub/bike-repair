@@ -39,7 +39,13 @@ const Navbar = () => {
   return (
     <nav className="navbar" style={{
       background:theme.colorOne,
-      padding:"10px"
+      padding:"10px",
+      position:"fixed",
+      left:"0",
+      right:"0",
+      top:"0",
+      height:"80px",
+      zIndex:"5",
       }}>
       <CssButton onClick={() => navigate("/repairlist")} size="small" style={{
       }}>

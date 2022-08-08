@@ -27,7 +27,8 @@ function App() {
       color:theme.colorOne,
       minHeight:"100vh",
       transition:"background 0.4s ease-in-out",
-      paddingBottom:"50px",
+      padding:"50px 0",
+      margin:"0 0"
       }}>
       <Navbar />
       <Routes>
